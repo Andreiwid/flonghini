@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Pesquisador;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,27 +19,28 @@ class DefaultController extends Controller
         $finder = new Finder();
         $finder->files()->in('/home/francisco/projetos/proj/xml');
 
-
         foreach ($finder as $file) {
             $cv = new \SimpleXMLElement($file->getContents());
-//            var_dump($cv->CURRICULO-VITAE->DADOS-GERAIS);
-
-//            $cv = simplexml_load_string($file->getContents()) or die("Error: Cannot create object");
-
-//            foreach($cv['DADOS-GERAIS']->attributes() as $a => $b) 
-//            {
-//                echo $a,'="',$b,"<br>";
-//            }
-
             $json = json_encode($cv);
-            $array = json_decode($json,TRUE);
-                        var_dump($array['DADOS-GERAIS']);
-
-
+            $cvArray = json_decode($json,TRUE);
         }
-//            var_dump($array['DADOS-GERAIS']['@attributes']['NOME-COMPLETO']);
-//            var_dump($array['PRODUCAO-BIBLIOGRAFICA']['ARTIGOS-PUBLICADOS']['ARTIGO-PUBLICADO'][0]);
-            die();
+
+//            var_dump($cvArray['DADOS-GERAIS']);
+//            var_dump($cvArray['PRODUCAO-BIBLIOGRAFICA']['ARTIGOS-PUBLICADOS']['ARTIGO-PUBLICADO']);
+//            die();
+
+        $em = $this->getDoctrine()->getManager();
+        $pesquisador = new Pesquisador();
+        $pesquisador->setNomeCompleto($cvArray['DADOS-GERAIS']['@attributes']['NOME-COMPLETO']);
+        $pesquisador->setNacionalidade($cvArray['DADOS-GERAIS']['@attributes']['PAIS-DE-NACIONALIDADE']);
+        $pesquisador->setNomeEmCitacoes($cvArray['DADOS-GERAIS']['@attributes']['NOME-EM-CITACOES-BIBLIOGRAFICAS']);
+
+
+        $em->persist($pesquisador);
+        $em->flush();
+
+
+
         return $this->render(
             'default/index.html.twig',
             [
@@ -47,21 +49,21 @@ class DefaultController extends Controller
         );
     }
 
-    function displayNode($node, $offset) {
 
-        if (is_object($node)) {
-            $node = get_object_vars($node);
-            foreach ($node as $key => $value) {
-                echo str_repeat(" ", $offset) . "-" . $key . "\n";
-                $this->displayNode($value, $offset + 1);
-            }
-        } elseif (is_array($node)) {
-            foreach ($node as $key => $value) {
-                if (is_object($value))
-                    $this->displayNode($value, $offset + 1);
-                else
-                    echo str_repeat(" ", $offset) . "-" . $key . "\n";
-            }
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
