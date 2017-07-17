@@ -1,0 +1,12 @@
+AppBundle\Entity\GrauDeFormacao:
+  licenciatura:
+    grau: 'Licenciatura'
+
+  bacharelado:
+    grau: 'Bacharelado'
+
+  mestrado:
+    grau: 'Mestrado'
+
+  doutorado:
+    grau: 'Doutorado'

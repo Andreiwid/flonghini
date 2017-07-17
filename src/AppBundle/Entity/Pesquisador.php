@@ -42,6 +42,11 @@ class Pesquisador
      */
     private $nacionalidade;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\FormacaoAcademica", mappedBy="pesquisador")
+     */
+    private $formacaoAcademica;
+
 
     /**
      * Get id

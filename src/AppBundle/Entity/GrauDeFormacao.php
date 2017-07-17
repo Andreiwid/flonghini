@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class GrauDeFormacao
 {
-
+    const LICENCIATURA = 'Licenciatura';
     const BACHARELADO = 'Bacharelado';
     const MESTRADO = 'Mestrado';
     const DOUTORADO = 'Doutorado';

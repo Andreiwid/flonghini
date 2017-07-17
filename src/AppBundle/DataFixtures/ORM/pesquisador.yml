@@ -1,0 +1,5 @@
+AppBundle\Entity\Pesquisador:
+  pesquisador1:
+    nomeCompleto: 'teste'
+    nomeEmCitacoes: 'teres'
+    nacionalidade: 'brasil'

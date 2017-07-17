@@ -22,14 +22,15 @@ class FormacaoAcademica
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FormacaoAcademica")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pesquisador", inversedBy="formacaoAcademica")
      * @ORM\JoinColumn(name="pesquisador_id", referencedColumnName="id")
      */
     private $pesquisador;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GrauDeFormacao")
-     * @ORM\JoinColumn(name="grau_de_formacao_id", referencedColumnName="id")
+     * @var int
+     *
+     * @ORM\Column(name="grau_de_formacao", type="integer")
      */
     private $grauDeFormacao;
 
@@ -75,7 +76,7 @@ class FormacaoAcademica
     /**
      * Set pesquisador
      *
-     * @param integer $pesquisador
+     * @param Pesquisador $pesquisador
      *
      * @return FormacaoAcademica
      */
@@ -97,16 +98,12 @@ class FormacaoAcademica
     }
 
     /**
-     * Set grauDeFormacao
-     *
-     * @param integer $grauDeFormacao
-     *
-     * @return FormacaoAcademica
+     * @param $grauDeFormacao
+     * @return $this
      */
     public function setGrauDeFormacao($grauDeFormacao)
     {
         $this->grauDeFormacao = $grauDeFormacao;
-
         return $this;
     }
 
