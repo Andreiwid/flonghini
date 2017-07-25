@@ -50,12 +50,15 @@ class DefaultController extends Controller
             $curriculo = json_decode($json, true);
         }
 
-        $pesquisador = $this->salvarPesquisador($curriculo);
-        $this->salvarFormacaoAcademica($curriculo, $pesquisador);
-        $this->salvarTrabalhosEmEventos($curriculo, $pesquisador);
-        $this->salvarArtigosPublicados($curriculo, $pesquisador);
-        $this->salvarCapituloDeLivroPublicado($curriculo, $pesquisador);
+//        $pesquisador = $this->salvarPesquisador($curriculo);
+//        $this->salvarFormacaoAcademica($curriculo, $pesquisador);
+//        $this->salvarTrabalhosEmEventos($curriculo, $pesquisador);
+//        $this->salvarArtigosPublicados($curriculo, $pesquisador);
+//        $this->salvarCapituloDeLivroPublicado($curriculo, $pesquisador);
 
+
+        var_dump($curriculo);
+        die();
 
         return $this->render(
             'default/index.html.twig',
@@ -378,101 +381,105 @@ class DefaultController extends Controller
      */
     public function salvarCapituloDeLivroPublicado(array $curriculo, Pesquisador $pesquisador): void
     {
-        $capitulos =
-            $curriculo['PRODUCAO-BIBLIOGRAFICA']['LIVROS-E-CAPITULOS']
+        if (isset($curriculo['PRODUCAO-BIBLIOGRAFICA']['LIVROS-E-CAPITULOS']
+                    ['CAPITULOS-DE-LIVROS-PUBLICADOS']['CAPITULO-DE-LIVRO-PUBLICADO'])) {
+            $capitulos = $curriculo['PRODUCAO-BIBLIOGRAFICA']['LIVROS-E-CAPITULOS']
             ['CAPITULOS-DE-LIVROS-PUBLICADOS']['CAPITULO-DE-LIVRO-PUBLICADO'];
-        foreach ($capitulos as $capitulo) {
-            $capituloDeLivro = new CapituloDeLivroPublicado();
-            $capituloDeLivro->setSequenciaProducao($capitulo['@attributes']['SEQUENCIA-PRODUCAO']);
 
-            $dadosBasicosDoCapitulo = $capitulo['DADOS-BASICOS-DO-CAPITULO']['@attributes'];
-            $capituloDeLivro->setTipo($dadosBasicosDoCapitulo['TIPO']);
-            $capituloDeLivro->setTituloDoCapituloDoLivro($dadosBasicosDoCapitulo['TITULO-DO-CAPITULO-DO-LIVRO']);
-            $capituloDeLivro->setAno($dadosBasicosDoCapitulo['ANO']);
-            $capituloDeLivro->setPaisDePublicacao($dadosBasicosDoCapitulo['PAIS-DE-PUBLICACAO']);
-            $capituloDeLivro->setIdioma($dadosBasicosDoCapitulo['IDIOMA']);
-            $capituloDeLivro->setMeioDeDivulgacao($dadosBasicosDoCapitulo['MEIO-DE-DIVULGACAO']);
-            $capituloDeLivro->setFlagDeRelevancia($dadosBasicosDoCapitulo['FLAG-RELEVANCIA']);
-            $capituloDeLivro->setDoi($dadosBasicosDoCapitulo['DOI']);
-            $capituloDeLivro
-                ->setTituloDoCapituloDoLivroIngles($dadosBasicosDoCapitulo['TITULO-DO-CAPITULO-DO-LIVRO-INGLES']);
-            $capituloDeLivro->setFlagDivulgacaoCientifica($dadosBasicosDoCapitulo['FLAG-DIVULGACAO-CIENTIFICA']);
+            foreach ($capitulos as $capitulo) {
+                $capituloDeLivro = new CapituloDeLivroPublicado();
+                $capituloDeLivro->setSequenciaProducao($capitulo['@attributes']['SEQUENCIA-PRODUCAO']);
 
-            $detalhamentoDoCapitulo = $capitulo['DETALHAMENTO-DO-CAPITULO']['@attributes'];
-            $capituloDeLivro->setTituloDoLivro($detalhamentoDoCapitulo['TITULO-DO-LIVRO']);
-            $capituloDeLivro->setNumeroDeVolumes($detalhamentoDoCapitulo['NUMERO-DE-VOLUMES']);
-            $capituloDeLivro->setPaginaInicial($detalhamentoDoCapitulo['PAGINA-INICIAL']);
-            $capituloDeLivro->setPaginaFinal($detalhamentoDoCapitulo['PAGINA-FINAL']);
-            $capituloDeLivro->setIsbn($detalhamentoDoCapitulo['ISBN']);
-            $capituloDeLivro->setOrganizadores($detalhamentoDoCapitulo['ORGANIZADORES']);
-            $capituloDeLivro->setNumeroDaEdicaoRevisao($detalhamentoDoCapitulo['NUMERO-DA-EDICAO-REVISAO']);
-            $capituloDeLivro->setNumeroDaSerie($detalhamentoDoCapitulo['NUMERO-DA-SERIE']);
-            $capituloDeLivro->setCidadeDaEditora($detalhamentoDoCapitulo['CIDADE-DA-EDITORA']);
-            $capituloDeLivro->setNomeDaEditora($detalhamentoDoCapitulo['NOME-DA-EDITORA']);
+                $dadosBasicosDoCapitulo = $capitulo['DADOS-BASICOS-DO-CAPITULO']['@attributes'];
+                $capituloDeLivro->setTipo($dadosBasicosDoCapitulo['TIPO']);
+                $capituloDeLivro->setTituloDoCapituloDoLivro($dadosBasicosDoCapitulo['TITULO-DO-CAPITULO-DO-LIVRO']);
+                $capituloDeLivro->setAno($dadosBasicosDoCapitulo['ANO']);
+                $capituloDeLivro->setPaisDePublicacao($dadosBasicosDoCapitulo['PAIS-DE-PUBLICACAO']);
+                $capituloDeLivro->setIdioma($dadosBasicosDoCapitulo['IDIOMA']);
+                $capituloDeLivro->setMeioDeDivulgacao($dadosBasicosDoCapitulo['MEIO-DE-DIVULGACAO']);
+                $capituloDeLivro->setFlagDeRelevancia($dadosBasicosDoCapitulo['FLAG-RELEVANCIA']);
+                $capituloDeLivro->setDoi($dadosBasicosDoCapitulo['DOI']);
+                $capituloDeLivro
+                    ->setTituloDoCapituloDoLivroIngles($dadosBasicosDoCapitulo['TITULO-DO-CAPITULO-DO-LIVRO-INGLES']);
+                $capituloDeLivro->setFlagDivulgacaoCientifica($dadosBasicosDoCapitulo['FLAG-DIVULGACAO-CIENTIFICA']);
 
-            $capituloDeLivro
-                ->setSetorDeAtividade($capitulo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']);
-            $capituloDeLivro
-                ->setInformacaoAdicional(
-                    $capitulo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
-                );
+                $detalhamentoDoCapitulo = $capitulo['DETALHAMENTO-DO-CAPITULO']['@attributes'];
+                $capituloDeLivro->setTituloDoLivro($detalhamentoDoCapitulo['TITULO-DO-LIVRO']);
+                $capituloDeLivro->setNumeroDeVolumes($detalhamentoDoCapitulo['NUMERO-DE-VOLUMES']);
+                $capituloDeLivro->setPaginaInicial($detalhamentoDoCapitulo['PAGINA-INICIAL']);
+                $capituloDeLivro->setPaginaFinal($detalhamentoDoCapitulo['PAGINA-FINAL']);
+                $capituloDeLivro->setIsbn($detalhamentoDoCapitulo['ISBN']);
+                $capituloDeLivro->setOrganizadores($detalhamentoDoCapitulo['ORGANIZADORES']);
+                $capituloDeLivro->setNumeroDaEdicaoRevisao($detalhamentoDoCapitulo['NUMERO-DA-EDICAO-REVISAO']);
+                $capituloDeLivro->setNumeroDaSerie($detalhamentoDoCapitulo['NUMERO-DA-SERIE']);
+                $capituloDeLivro->setCidadeDaEditora($detalhamentoDoCapitulo['CIDADE-DA-EDITORA']);
+                $capituloDeLivro->setNomeDaEditora($detalhamentoDoCapitulo['NOME-DA-EDITORA']);
 
-            $autores = $capitulo['AUTORES'];
-            foreach ($autores as $autor) {
-                if (isset($autor['@attributes'])) {
-                    $autorCapitulo = new AutoresCapituloDeLivroPublicado();
-                    $autorCapitulo
-                        ->setNomeCompletoDoAutor($autor['@attributes']['NOME-COMPLETO-DO-AUTOR']);
-                    $autorCapitulo->setNomeParaCitacao($autor['@attributes']['NOME-PARA-CITACAO']);
-                    $autorCapitulo->setOrdemDeAutoria($autor['@attributes']['ORDEM-DE-AUTORIA']);
-                    $autorCapitulo->setCapitulo($capituloDeLivro);
+                $capituloDeLivro
+                    ->setSetorDeAtividade($capitulo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']);
+                $capituloDeLivro
+                    ->setInformacaoAdicional(
+                        $capitulo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
+                    );
+
+                $autores = $capitulo['AUTORES'];
+                foreach ($autores as $autor) {
+                    if (isset($autor['@attributes'])) {
+                        $autorCapitulo = new AutoresCapituloDeLivroPublicado();
+                        $autorCapitulo
+                            ->setNomeCompletoDoAutor($autor['@attributes']['NOME-COMPLETO-DO-AUTOR']);
+                        $autorCapitulo->setNomeParaCitacao($autor['@attributes']['NOME-PARA-CITACAO']);
+                        $autorCapitulo->setOrdemDeAutoria($autor['@attributes']['ORDEM-DE-AUTORIA']);
+                        $autorCapitulo->setCapitulo($capituloDeLivro);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($autorCapitulo);
+                        $em->flush();
+                    } else {
+                        $autorCapitulo = new AutoresCapituloDeLivroPublicado();
+                        $autorCapitulo->setNomeCompletoDoAutor($autor['NOME-COMPLETO-DO-AUTOR']);
+                        $autorCapitulo->setNomeParaCitacao($autor['NOME-PARA-CITACAO']);
+                        $autorCapitulo->setOrdemDeAutoria($autor['ORDEM-DE-AUTORIA']);
+                        $autorCapitulo->setCapitulo($capituloDeLivro);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($autorCapitulo);
+                        $em->flush();
+                    }
+                }
+
+                $tamanhoDoArray = sizeof($capitulo['AREAS-DO-CONHECIMENTO']);
+                for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                    $areasDoConhecimentoCapitulo =
+                        $capitulo['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+
+                    $areaConhecimentoCapituloNovo = new AreasDoConhecimentoCapituloDeLivro();
+                    $areaConhecimentoCapituloNovo
+                        ->setNomeGrandeAreaDoConhecimento(
+                            $areasDoConhecimentoCapitulo['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                        );
+                    $areaConhecimentoCapituloNovo
+                        ->setNomeDaAreaDoConhecimento(
+                            $areasDoConhecimentoCapitulo['NOME-DA-AREA-DO-CONHECIMENTO']
+                        );
+                    $areaConhecimentoCapituloNovo
+                        ->setNomeDaSubAreaDoConhecimento(
+                            $areasDoConhecimentoCapitulo['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                        );
+                    $areaConhecimentoCapituloNovo
+                        ->setNomeDaEspecialidade(
+                            $areasDoConhecimentoCapitulo['NOME-DA-ESPECIALIDADE']
+                        );
+                    $areaConhecimentoCapituloNovo->setCapitulo($capituloDeLivro);
                     $em = $this->getDoctrine()->getManager();
-                    $em->persist($autorCapitulo);
-                    $em->flush();
-                } else {
-                    $autorCapitulo = new AutoresCapituloDeLivroPublicado();
-                    $autorCapitulo->setNomeCompletoDoAutor($autor['NOME-COMPLETO-DO-AUTOR']);
-                    $autorCapitulo->setNomeParaCitacao($autor['NOME-PARA-CITACAO']);
-                    $autorCapitulo->setOrdemDeAutoria($autor['ORDEM-DE-AUTORIA']);
-                    $autorCapitulo->setCapitulo($capituloDeLivro);
-                    $em = $this->getDoctrine()->getManager();
-                    $em->persist($autorCapitulo);
+                    $em->persist($areaConhecimentoCapituloNovo);
                     $em->flush();
                 }
-            }
-
-            $tamanhoDoArray = sizeof($capitulo['AREAS-DO-CONHECIMENTO']);
-            for ($x = 1; $x <= $tamanhoDoArray; $x++) {
-                $areasDoConhecimentoCapitulo =
-                    $capitulo['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
-
-                $areaConhecimentoCapituloNovo = new AreasDoConhecimentoCapituloDeLivro();
-                $areaConhecimentoCapituloNovo
-                    ->setNomeGrandeAreaDoConhecimento(
-                        $areasDoConhecimentoCapitulo['NOME-GRANDE-AREA-DO-CONHECIMENTO']
-                    );
-                $areaConhecimentoCapituloNovo
-                    ->setNomeDaAreaDoConhecimento(
-                        $areasDoConhecimentoCapitulo['NOME-DA-AREA-DO-CONHECIMENTO']
-                    );
-                $areaConhecimentoCapituloNovo
-                    ->setNomeDaSubAreaDoConhecimento(
-                        $areasDoConhecimentoCapitulo['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
-                    );
-                $areaConhecimentoCapituloNovo
-                    ->setNomeDaEspecialidade(
-                        $areasDoConhecimentoCapitulo['NOME-DA-ESPECIALIDADE']
-                    );
-                $areaConhecimentoCapituloNovo->setCapitulo($capituloDeLivro);
+                $capituloDeLivro->setPesquisador($pesquisador);
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($areaConhecimentoCapituloNovo);
+                $em->persist($capituloDeLivro);
                 $em->flush();
             }
-            $capituloDeLivro->setPesquisador($pesquisador);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($capituloDeLivro);
-            $em->flush();
         }
+
     }
 
 }
