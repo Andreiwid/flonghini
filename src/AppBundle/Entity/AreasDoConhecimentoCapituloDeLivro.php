@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AreasDoConhecimentoArtigo
+ * AreasDoConhecimentoCapituloDeLivro
  *
- * @ORM\Table(name="areas_do_conhecimento_artigo")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AreasDoConhecimentoArtigoRepository")
+ * @ORM\Table(name="areas_do_conhecimento_capitulo_de_livro")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AreasDoConhecimentoCapituloDeLivroRepository")
  */
-class AreasDoConhecimentoArtigo
+class AreasDoConhecimentoCapituloDeLivro
 {
     /**
      * @var int
@@ -50,10 +50,11 @@ class AreasDoConhecimentoArtigo
     private $nomeDaEspecialidade;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ArtigosPublicados", inversedBy="areasDoConhecimento")
-     * @ORM\JoinColumn(name="trabalho_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CapituloDeLivroPublicado", inversedBy="areasDoConhecimento",
+     *     cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="capitulo_id", referencedColumnName="id")
      */
-    private $trabalho;
+    private $capitulo;
 
 
     /**
@@ -71,7 +72,7 @@ class AreasDoConhecimentoArtigo
      *
      * @param string $nomeGrandeAreaDoConhecimento
      *
-     * @return AreasDoConhecimentoArtigo
+     * @return AreasDoConhecimentoCapituloDeLivro
      */
     public function setNomeGrandeAreaDoConhecimento($nomeGrandeAreaDoConhecimento)
     {
@@ -95,7 +96,7 @@ class AreasDoConhecimentoArtigo
      *
      * @param string $nomeDaAreaDoConhecimento
      *
-     * @return AreasDoConhecimentoArtigo
+     * @return AreasDoConhecimentoCapituloDeLivro
      */
     public function setNomeDaAreaDoConhecimento($nomeDaAreaDoConhecimento)
     {
@@ -119,7 +120,7 @@ class AreasDoConhecimentoArtigo
      *
      * @param string $nomeDaSubAreaDoConhecimento
      *
-     * @return AreasDoConhecimentoArtigo
+     * @return AreasDoConhecimentoCapituloDeLivro
      */
     public function setNomeDaSubAreaDoConhecimento($nomeDaSubAreaDoConhecimento)
     {
@@ -143,7 +144,7 @@ class AreasDoConhecimentoArtigo
      *
      * @param string $nomeDaEspecialidade
      *
-     * @return AreasDoConhecimentoArtigo
+     * @return AreasDoConhecimentoCapituloDeLivro
      */
     public function setNomeDaEspecialidade($nomeDaEspecialidade)
     {
@@ -165,17 +166,17 @@ class AreasDoConhecimentoArtigo
     /**
      * @return mixed
      */
-    public function getTrabalho()
+    public function getCapitulo()
     {
-        return $this->trabalho;
+        return $this->capitulo;
     }
 
     /**
-     * @param mixed $trabalho
+     * @param mixed $capitulo
      */
-    public function setTrabalho($trabalho)
+    public function setCapitulo($capitulo)
     {
-        $this->trabalho = $trabalho;
+        $this->capitulo = $capitulo;
     }
 
 
