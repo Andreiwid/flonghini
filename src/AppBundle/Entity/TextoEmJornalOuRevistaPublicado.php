@@ -32,7 +32,7 @@ class TextoEmJornalOuRevistaPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="sequenciaProducao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="sequencia_producao", type="string", length=255, nullable=true)
      */
     private $sequenciaProducao;
 
@@ -46,21 +46,21 @@ class TextoEmJornalOuRevistaPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoTexto", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_texto", type="string", length=255, nullable=true)
      */
     private $tituloDoTexto;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="anoDoTexto", type="string", length=255, nullable=true)
+     * @ORM\Column(name="ano_do_texto", type="string", length=255, nullable=true)
      */
     private $anoDoTexto;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="paisDePublicacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pais_de_publicacao", type="string", length=255, nullable=true)
      */
     private $paisDePublicacao;
 
@@ -74,14 +74,14 @@ class TextoEmJornalOuRevistaPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="meioDeDivulgacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="meio_de_divulgacao", type="string", length=255, nullable=true)
      */
     private $meioDeDivulgacao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="flagRelevancia", type="string", length=255, nullable=true)
+     * @ORM\Column(name="flag_relevancia", type="string", length=255, nullable=true)
      */
     private $flagRelevancia;
 
@@ -95,21 +95,21 @@ class TextoEmJornalOuRevistaPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoTextoEmIngles", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_texto_em_ingles", type="string", length=255, nullable=true)
      */
     private $tituloDoTextoEmIngles;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="flagDivulgacaoCientifica", type="string", length=255, nullable=true)
+     * @ORM\Column(name="flag_divulgacao_cientifica", type="string", length=255, nullable=true)
      */
     private $flagDivulgacaoCientifica;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoJornalOuRevista", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_jornal_ou_revista", type="string", length=255, nullable=true)
      */
     private $tituloDoJornalOuRevista;
 
@@ -123,14 +123,14 @@ class TextoEmJornalOuRevistaPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="formatoDataDePublicacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="formato_data_de_publicacao", type="string", length=255, nullable=true)
      */
     private $formatoDataDePublicacao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dataDePublicacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="data_de_publicacao", type="string", length=255, nullable=true)
      */
     private $dataDePublicacao;
 
@@ -144,21 +144,21 @@ class TextoEmJornalOuRevistaPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="paginaInicial", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pagina_inicial", type="string", length=255, nullable=true)
      */
     private $paginaInicial;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="paginaFinal", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pagina_final", type="string", length=255, nullable=true)
      */
     private $paginaFinal;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="localDePublicacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="local_de_publicacao", type="string", length=255, nullable=true)
      */
     private $localDePublicacao;
 
@@ -179,14 +179,14 @@ class TextoEmJornalOuRevistaPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="setoresDeAtividade", type="string", length=255, nullable=true)
+     * @ORM\Column(name="setores_de_atividade", type="string", length=255, nullable=true)
      */
     private $setoresDeAtividade;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="informacaoAdicional", type="text", nullable=true)
+     * @ORM\Column(name="informacao_adicional", type="text", nullable=true)
      */
     private $informacaoAdicional;
 

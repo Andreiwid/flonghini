@@ -32,7 +32,7 @@ class TrabalhosEmEventos
     /**
      * @var int
      *
-     * @ORM\Column(name="sequenciaProducao", type="integer", nullable=true)
+     * @ORM\Column(name="sequencia_producao", type="integer", nullable=true)
      */
     private $sequenciaProducao;
 
@@ -46,21 +46,21 @@ class TrabalhosEmEventos
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoTrabalho", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_trabalho", type="string", length=255, nullable=true)
      */
     private $tituloDoTrabalho;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="anoDoTrabalho", type="string", length=255, nullable=true)
+     * @ORM\Column(name="ano_do_trabalho", type="string", length=255, nullable=true)
      */
     private $anoDoTrabalho;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="paisDoEvento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pais_do_evento", type="string", length=255, nullable=true)
      */
     private $paisDoEvento;
 
@@ -74,14 +74,14 @@ class TrabalhosEmEventos
     /**
      * @var string
      *
-     * @ORM\Column(name="meioDeDivulgacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="meio_de_divulgacao", type="string", length=255, nullable=true)
      */
     private $meioDeDivulgacao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="flagRelevancia", type="string", length=255, nullable=true)
+     * @ORM\Column(name="flag_relevancia", type="string", length=255, nullable=true)
      */
     private $flagRelevancia;
 
@@ -95,49 +95,49 @@ class TrabalhosEmEventos
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoTrabalhoIngles", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_trabalho_ingles", type="string", length=255, nullable=true)
      */
     private $tituloDoTrabalhoIngles;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="flagDivulgacaoCientifica", type="string", length=255, nullable=true)
+     * @ORM\Column(name="flag_divulgacao_cientifica", type="string", length=255, nullable=true)
      */
     private $flagDivulgacaoCientifica;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="classificacaoDoEvento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="classificacao_do_evento", type="string", length=255, nullable=true)
      */
     private $classificacaoDoEvento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDoEvento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_do_evento", type="string", length=255, nullable=true)
      */
     private $nomeDoEvento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cidadeDoEvento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="cidade_do_evento", type="string", length=255, nullable=true)
      */
     private $cidadeDoEvento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="anoDeRealizacao", type="string", length=4, nullable=true)
+     * @ORM\Column(name="ano_de_realizacao", type="string", length=4, nullable=true)
      */
     private $anoDeRealizacao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDosAnaisOuProceedings", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_dos_anais_ou_proceedings", type="string", length=255, nullable=true)
      */
     private $tituloDosAnaisOuProceedings;
 
@@ -165,14 +165,14 @@ class TrabalhosEmEventos
     /**
      * @var string
      *
-     * @ORM\Column(name="paginaInicial", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pagina_inicial", type="string", length=255, nullable=true)
      */
     private $paginaInicial;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="paginaFinal", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pagina_final", type="string", length=255, nullable=true)
      */
     private $paginaFinal;
 
@@ -186,14 +186,14 @@ class TrabalhosEmEventos
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDaEditora", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_da_editora", type="string", length=255, nullable=true)
      */
     private $nomeDaEditora;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cidadeDaEditora", type="string", length=255, nullable=true)
+     * @ORM\Column(name="cidade_da_editora", type="string", length=255, nullable=true)
      */
     private $cidadeDaEditora;
 
@@ -207,28 +207,28 @@ class TrabalhosEmEventos
     /**
      * @var string
      *
-     * @ORM\Column(name="areasDoConhecimento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="areas_do_conhecimento", type="string", length=255, nullable=true)
      */
     private $nomeAreaDoConhecimento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeGrandeAreaDoConhecimento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_grande_area_do_conhecimento", type="string", length=255, nullable=true)
      */
     private $nomeGrandeAreaDoConhecimento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDaSubAreaDoConhecimento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_da_sub_area_do_conhecimento", type="string", length=255, nullable=true)
      */
     private $nomeDaSubAreaDoConhecimento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDaEspecialidade", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_da_especialidade", type="string", length=255, nullable=true)
      */
     private $nomeDaEspecialidade;
 

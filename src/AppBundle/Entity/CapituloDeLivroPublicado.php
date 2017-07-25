@@ -32,7 +32,7 @@ class CapituloDeLivroPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="sequenciaProducao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="sequencia_producao", type="string", length=255, nullable=true)
      */
     private $sequenciaProducao;
 
@@ -46,7 +46,7 @@ class CapituloDeLivroPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoCapituloDoLivro", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_capitulo_do_livro", type="string", length=255, nullable=true)
      */
     private $tituloDoCapituloDoLivro;
 
@@ -60,7 +60,7 @@ class CapituloDeLivroPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="paisDePublicacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pais_de_publicacao", type="string", length=255, nullable=true)
      */
     private $paisDePublicacao;
 
@@ -74,14 +74,14 @@ class CapituloDeLivroPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="meioDeDivulgacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="meio_de_divulgacao", type="string", length=255, nullable=true)
      */
     private $meioDeDivulgacao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="flagDeRelevancia", type="string", length=255, nullable=true)
+     * @ORM\Column(name="flag_de_relevancia", type="string", length=255, nullable=true)
      */
     private $flagDeRelevancia;
 
@@ -95,42 +95,42 @@ class CapituloDeLivroPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoCapituloDoLivroIngles", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_capitulo_do_livro_ingles", type="string", length=255, nullable=true)
      */
     private $tituloDoCapituloDoLivroIngles;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="flagDivulgacaoCientifica", type="string", length=255, nullable=true)
+     * @ORM\Column(name="flag_divulgacao_cientifica", type="string", length=255, nullable=true)
      */
     private $flagDivulgacaoCientifica;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoLivro", type="string", length=255, nullable=true)
+     * @ORM\Column(name="titulo_do_livro", type="string", length=255, nullable=true)
      */
     private $tituloDoLivro;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numeroDeVolumes", type="string", length=255, nullable=true)
+     * @ORM\Column(name="numero_de_volumes", type="string", length=255, nullable=true)
      */
     private $numeroDeVolumes;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="paginaInicial", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pagina_inicial", type="string", length=255, nullable=true)
      */
     private $paginaInicial;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="paginaFinal", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pagina_final", type="string", length=255, nullable=true)
      */
     private $paginaFinal;
 
@@ -151,28 +151,28 @@ class CapituloDeLivroPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="numeroDaEdicaoRevisao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="numero_da_edicao_revisao", type="string", length=255, nullable=true)
      */
     private $numeroDaEdicaoRevisao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numeroDaSerie", type="string", length=255, nullable=true)
+     * @ORM\Column(name="numero_da_serie", type="string", length=255, nullable=true)
      */
     private $numeroDaSerie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cidadeDaEditora", type="string", length=255, nullable=true)
+     * @ORM\Column(name="cidade_da_editora", type="string", length=255, nullable=true)
      */
     private $cidadeDaEditora;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDaEditora", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_da_editora", type="string", length=255, nullable=true)
      */
     private $nomeDaEditora;
 
@@ -193,14 +193,14 @@ class CapituloDeLivroPublicado
     /**
      * @var string
      *
-     * @ORM\Column(name="setorDeAtividade", type="string", length=255, nullable=true)
+     * @ORM\Column(name="setor_de_atividade", type="string", length=255, nullable=true)
      */
     private $setorDeAtividade;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="informacaoAdicional", type="string", length=255, nullable=true)
+     * @ORM\Column(name="informacao_adicional", type="string", length=255, nullable=true)
      */
     private $informacaoAdicional;
 

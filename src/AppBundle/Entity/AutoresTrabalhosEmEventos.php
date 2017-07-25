@@ -24,21 +24,21 @@ class AutoresTrabalhosEmEventos
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeCompletoDoAutor", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_completo_do_autor", type="string", length=255, nullable=true)
      */
     private $nomeCompletoDoAutor;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeParaCitacao", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_para_citacao", type="string", length=255, nullable=true)
      */
     private $nomeParaCitacao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ordemDeAutoria", type="string", length=255, nullable=true)
+     * @ORM\Column(name="ordem_de_autoria", type="string", length=255, nullable=true)
      */
     private $ordemDeAutoria;
 

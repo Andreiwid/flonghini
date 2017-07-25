@@ -24,28 +24,28 @@ class AreasDoConhecimentoCapituloDeLivro
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeGrandeAreaDoConhecimento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_grande_area_do_conhecimento", type="string", length=255, nullable=true)
      */
     private $nomeGrandeAreaDoConhecimento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDaAreaDoConhecimento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_da_area_do_conhecimento", type="string", length=255, nullable=true)
      */
     private $nomeDaAreaDoConhecimento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDaSubAreaDoConhecimento", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_da_sub_area_do_conhecimento", type="string", length=255, nullable=true)
      */
     private $nomeDaSubAreaDoConhecimento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomeDaEspecialidade", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nome_da_especialidade", type="string", length=255, nullable=true)
      */
     private $nomeDaEspecialidade;
 
