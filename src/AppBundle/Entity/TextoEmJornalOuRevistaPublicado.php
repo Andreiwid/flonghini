@@ -6,12 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ArtigosPublicados
+ * TextoEmJornalOuRevistaPublicado
  *
- * @ORM\Table(name="artigos_publicados")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ArtigosPublicadosRepository")
+ * @ORM\Table(name="texto_em_jornal_ou_revista_publicado")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TextoEmJornalOuRevistaPublicadoRepository")
  */
-class ArtigosPublicados
+class TextoEmJornalOuRevistaPublicado
 {
     /**
      * @var int
@@ -46,16 +46,16 @@ class ArtigosPublicados
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoArtigo", type="string", length=255, nullable=true)
+     * @ORM\Column(name="tituloDoTexto", type="string", length=255, nullable=true)
      */
-    private $tituloDoArtigo;
+    private $tituloDoTexto;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="anoDoArtigo", type="string", length=255, nullable=true)
+     * @ORM\Column(name="anoDoTexto", type="string", length=255, nullable=true)
      */
-    private $anoDoArtigo;
+    private $anoDoTexto;
 
     /**
      * @var string
@@ -95,23 +95,23 @@ class ArtigosPublicados
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloArtigoEmIngles", type="string", length=255, nullable=true)
+     * @ORM\Column(name="tituloDoTextoEmIngles", type="string", length=255, nullable=true)
      */
-    private $tituloArtigoEmIngles;
+    private $tituloDoTextoEmIngles;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="flagDivulgacaoCientifca", type="string", length=255, nullable=true)
+     * @ORM\Column(name="flagDivulgacaoCientifica", type="string", length=255, nullable=true)
      */
-    private $flagDivulgacaoCientifca;
+    private $flagDivulgacaoCientifica;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tituloDoPeriodicoOuRevista", type="string", length=255, nullable=true)
+     * @ORM\Column(name="tituloDoJornalOuRevista", type="string", length=255, nullable=true)
      */
-    private $tituloDoPeriodicoOuRevista;
+    private $tituloDoJornalOuRevista;
 
     /**
      * @var string
@@ -123,23 +123,23 @@ class ArtigosPublicados
     /**
      * @var string
      *
+     * @ORM\Column(name="formatoDataDePublicacao", type="string", length=255, nullable=true)
+     */
+    private $formatoDataDePublicacao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dataDePublicacao", type="string", length=255, nullable=true)
+     */
+    private $dataDePublicacao;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="volume", type="string", length=255, nullable=true)
      */
     private $volume;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fasciculo", type="string", length=255, nullable=true)
-     */
-    private $fasciculo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="serie", type="string", length=255, nullable=true)
-     */
-    private $serie;
 
     /**
      * @var string
@@ -164,15 +164,15 @@ class ArtigosPublicados
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AutoresArtigosPublicados", mappedBy="trabalho",
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AutoresTextoEmJornalOuRevista", mappedBy="textoEmJornalOuRevista",
      *     cascade={"persist", "remove"})
      */
-    public $autores;
+    private $autores;
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AreasDoConhecimentoArtigo", mappedBy="trabalho",
-     *     cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AreasDoConhecimentoTextoEmJornalOuRevista",
+     *     mappedBy="textoEmJornalOuRevista", cascade={"persist", "remove"})
      */
     private $areasDoConhecimento;
 
@@ -186,7 +186,7 @@ class ArtigosPublicados
     /**
      * @var string
      *
-     * @ORM\Column(name="informacaoAdicional", type="string", length=255, nullable=true)
+     * @ORM\Column(name="informacaoAdicional", type="text", nullable=true)
      */
     private $informacaoAdicional;
 
@@ -207,27 +207,11 @@ class ArtigosPublicados
     }
 
     /**
-     * @return Pesquisador
-     */
-    public function getPesquisador()
-    {
-        return $this->pesquisador;
-    }
-
-    /**
-     * @param $pesquisador
-     */
-    public function setPesquisador($pesquisador)
-    {
-        $this->pesquisador = $pesquisador;
-    }
-
-    /**
      * Set sequenciaProducao
      *
      * @param string $sequenciaProducao
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setSequenciaProducao($sequenciaProducao)
     {
@@ -251,7 +235,7 @@ class ArtigosPublicados
      *
      * @param string $natureza
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setNatureza($natureza)
     {
@@ -271,51 +255,51 @@ class ArtigosPublicados
     }
 
     /**
-     * Set tituloDoArtigo
+     * Set tituloDoTexto
      *
-     * @param string $tituloDoArtigo
+     * @param string $tituloDoTexto
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
-    public function setTituloDoArtigo($tituloDoArtigo)
+    public function setTituloDoTexto($tituloDoTexto)
     {
-        $this->tituloDoArtigo = $tituloDoArtigo;
+        $this->tituloDoTexto = $tituloDoTexto;
 
         return $this;
     }
 
     /**
-     * Get tituloDoArtigo
+     * Get tituloDoTexto
      *
      * @return string
      */
-    public function getTituloDoArtigo()
+    public function getTituloDoTexto()
     {
-        return $this->tituloDoArtigo;
+        return $this->tituloDoTexto;
     }
 
     /**
-     * Set anoDoArtigo
+     * Set anoDoTexto
      *
-     * @param string $anoDoArtigo
+     * @param string $anoDoTexto
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
-    public function setAnoDoArtigo($anoDoArtigo)
+    public function setAnoDoTexto($anoDoTexto)
     {
-        $this->anoDoArtigo = $anoDoArtigo;
+        $this->anoDoTexto = $anoDoTexto;
 
         return $this;
     }
 
     /**
-     * Get anoDoArtigo
+     * Get anoDoTexto
      *
      * @return string
      */
-    public function getAnoDoArtigo()
+    public function getAnoDoTexto()
     {
-        return $this->anoDoArtigo;
+        return $this->anoDoTexto;
     }
 
     /**
@@ -323,7 +307,7 @@ class ArtigosPublicados
      *
      * @param string $paisDePublicacao
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setPaisDePublicacao($paisDePublicacao)
     {
@@ -347,7 +331,7 @@ class ArtigosPublicados
      *
      * @param string $idioma
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setIdioma($idioma)
     {
@@ -371,7 +355,7 @@ class ArtigosPublicados
      *
      * @param string $meioDeDivulgacao
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setMeioDeDivulgacao($meioDeDivulgacao)
     {
@@ -395,7 +379,7 @@ class ArtigosPublicados
      *
      * @param string $flagRelevancia
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setFlagRelevancia($flagRelevancia)
     {
@@ -419,7 +403,7 @@ class ArtigosPublicados
      *
      * @param string $doi
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setDoi($doi)
     {
@@ -439,75 +423,75 @@ class ArtigosPublicados
     }
 
     /**
-     * Set tituloArtigoEmIngles
+     * Set tituloDoTextoEmIngles
      *
-     * @param string $tituloArtigoEmIngles
+     * @param string $tituloDoTextoEmIngles
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
-    public function setTituloArtigoEmIngles($tituloArtigoEmIngles)
+    public function setTituloDoTextoEmIngles($tituloDoTextoEmIngles)
     {
-        $this->tituloArtigoEmIngles = $tituloArtigoEmIngles;
+        $this->tituloDoTextoEmIngles = $tituloDoTextoEmIngles;
 
         return $this;
     }
 
     /**
-     * Get tituloArtigoEmIngles
+     * Get tituloDoTextoEmIngles
      *
      * @return string
      */
-    public function getTituloArtigoEmIngles()
+    public function getTituloDoTextoEmIngles()
     {
-        return $this->tituloArtigoEmIngles;
+        return $this->tituloDoTextoEmIngles;
     }
 
     /**
-     * Set flagDivulgacaoCientifca
+     * Set flagDivulgacaoCientifica
      *
-     * @param string $flagDivulgacaoCientifca
+     * @param string $flagDivulgacaoCientifica
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
-    public function setFlagDivulgacaoCientifca($flagDivulgacaoCientifca)
+    public function setFlagDivulgacaoCientifica($flagDivulgacaoCientifica)
     {
-        $this->flagDivulgacaoCientifca = $flagDivulgacaoCientifca;
+        $this->flagDivulgacaoCientifica = $flagDivulgacaoCientifica;
 
         return $this;
     }
 
     /**
-     * Get flagDivulgacaoCientifca
+     * Get flagDivulgacaoCientifica
      *
      * @return string
      */
-    public function getFlagDivulgacaoCientifca()
+    public function getFlagDivulgacaoCientifica()
     {
-        return $this->flagDivulgacaoCientifca;
+        return $this->flagDivulgacaoCientifica;
     }
 
     /**
-     * Set tituloDoPeriodicoOuRevista
+     * Set tituloDoJornalOuRevista
      *
-     * @param string $tituloDoPeriodicoOuRevista
+     * @param string $tituloDoJornalOuRevista
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
-    public function setTituloDoPeriodicoOuRevista($tituloDoPeriodicoOuRevista)
+    public function setTituloDoJornalOuRevista($tituloDoJornalOuRevista)
     {
-        $this->tituloDoPeriodicoOuRevista = $tituloDoPeriodicoOuRevista;
+        $this->tituloDoJornalOuRevista = $tituloDoJornalOuRevista;
 
         return $this;
     }
 
     /**
-     * Get tituloDoPeriodicoOuRevista
+     * Get tituloDoJornalOuRevista
      *
      * @return string
      */
-    public function getTituloDoPeriodicoOuRevista()
+    public function getTituloDoJornalOuRevista()
     {
-        return $this->tituloDoPeriodicoOuRevista;
+        return $this->tituloDoJornalOuRevista;
     }
 
     /**
@@ -515,7 +499,7 @@ class ArtigosPublicados
      *
      * @param string $issn
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setIssn($issn)
     {
@@ -535,11 +519,59 @@ class ArtigosPublicados
     }
 
     /**
+     * Set formatoDataDePublicacao
+     *
+     * @param string $formatoDataDePublicacao
+     *
+     * @return TextoEmJornalOuRevistaPublicado
+     */
+    public function setFormatoDataDePublicacao($formatoDataDePublicacao)
+    {
+        $this->formatoDataDePublicacao = $formatoDataDePublicacao;
+
+        return $this;
+    }
+
+    /**
+     * Get formatoDataDePublicacao
+     *
+     * @return string
+     */
+    public function getFormatoDataDePublicacao()
+    {
+        return $this->formatoDataDePublicacao;
+    }
+
+    /**
+     * Set dataDePublicacao
+     *
+     * @param string $dataDePublicacao
+     *
+     * @return TextoEmJornalOuRevistaPublicado
+     */
+    public function setDataDePublicacao($dataDePublicacao)
+    {
+        $this->dataDePublicacao = $dataDePublicacao;
+
+        return $this;
+    }
+
+    /**
+     * Get dataDePublicacao
+     *
+     * @return string
+     */
+    public function getDataDePublicacao()
+    {
+        return $this->dataDePublicacao;
+    }
+
+    /**
      * Set volume
      *
      * @param string $volume
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setVolume($volume)
     {
@@ -559,59 +591,11 @@ class ArtigosPublicados
     }
 
     /**
-     * Set fasciculo
-     *
-     * @param string $fasciculo
-     *
-     * @return ArtigosPublicados
-     */
-    public function setFasciculo($fasciculo)
-    {
-        $this->fasciculo = $fasciculo;
-
-        return $this;
-    }
-
-    /**
-     * Get fasciculo
-     *
-     * @return string
-     */
-    public function getFasciculo()
-    {
-        return $this->fasciculo;
-    }
-
-    /**
-     * Set serie
-     *
-     * @param string $serie
-     *
-     * @return ArtigosPublicados
-     */
-    public function setSerie($serie)
-    {
-        $this->serie = $serie;
-
-        return $this;
-    }
-
-    /**
-     * Get serie
-     *
-     * @return string
-     */
-    public function getSerie()
-    {
-        return $this->serie;
-    }
-
-    /**
      * Set paginaInicial
      *
      * @param string $paginaInicial
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setPaginaInicial($paginaInicial)
     {
@@ -635,7 +619,7 @@ class ArtigosPublicados
      *
      * @param string $paginaFinal
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setPaginaFinal($paginaFinal)
     {
@@ -659,7 +643,7 @@ class ArtigosPublicados
      *
      * @param string $localDePublicacao
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setLocalDePublicacao($localDePublicacao)
     {
@@ -683,7 +667,7 @@ class ArtigosPublicados
      *
      * @param string $autores
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setAutores($autores)
     {
@@ -707,9 +691,9 @@ class ArtigosPublicados
      *
      * @param string $areasDoConhecimento
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
-    public function setAreasDoConhecimento($areasDoConhecimento)
+    public function setAreasDeConhecimento($areasDoConhecimento)
     {
         $this->areasDoConhecimento = $areasDoConhecimento;
 
@@ -721,7 +705,7 @@ class ArtigosPublicados
      *
      * @return string
      */
-    public function getAreasDoConhecimento()
+    public function getAreasDeConhecimento()
     {
         return $this->areasDoConhecimento;
     }
@@ -731,7 +715,7 @@ class ArtigosPublicados
      *
      * @param string $setoresDeAtividade
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setSetoresDeAtividade($setoresDeAtividade)
     {
@@ -755,7 +739,7 @@ class ArtigosPublicados
      *
      * @param string $informacaoAdicional
      *
-     * @return ArtigosPublicados
+     * @return TextoEmJornalOuRevistaPublicado
      */
     public function setInformacaoAdicional($informacaoAdicional)
     {
@@ -773,5 +757,23 @@ class ArtigosPublicados
     {
         return $this->informacaoAdicional;
     }
+
+    /**
+     * @return Pesquisador
+     */
+    public function getPesquisador(): Pesquisador
+    {
+        return $this->pesquisador;
+    }
+
+    /**
+     * @param Pesquisador $pesquisador
+     */
+    public function setPesquisador(Pesquisador $pesquisador)
+    {
+        $this->pesquisador = $pesquisador;
+    }
+
+
 }
 

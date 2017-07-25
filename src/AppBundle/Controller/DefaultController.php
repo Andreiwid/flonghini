@@ -3,14 +3,20 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\AreasDoConhecimentoArtigo;
+use AppBundle\Entity\AreasDoConhecimentoArtigoAceitoParaPublicacao;
 use AppBundle\Entity\AreasDoConhecimentoCapituloDeLivro;
+use AppBundle\Entity\AreasDoConhecimentoTextoEmJornalOuRevista;
+use AppBundle\Entity\ArtigoAceitoParaPublicacao;
 use AppBundle\Entity\ArtigosPublicados;
+use AppBundle\Entity\AutoresArtigoAceitoParaPublicacao;
 use AppBundle\Entity\AutoresArtigosPublicados;
 use AppBundle\Entity\AutoresCapituloDeLivroPublicado;
+use AppBundle\Entity\AutoresTextoEmJornalOuRevista;
 use AppBundle\Entity\AutoresTrabalhosEmEventos;
 use AppBundle\Entity\CapituloDeLivroPublicado;
 use AppBundle\Entity\FormacaoAcademica;
 use AppBundle\Entity\Pesquisador;
+use AppBundle\Entity\TextoEmJornalOuRevistaPublicado;
 use AppBundle\Entity\TrabalhosEmEventos;
 use AppBundle\Services\DefaultService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -50,15 +56,13 @@ class DefaultController extends Controller
             $curriculo = json_decode($json, true);
         }
 
-//        $pesquisador = $this->salvarPesquisador($curriculo);
-//        $this->salvarFormacaoAcademica($curriculo, $pesquisador);
-//        $this->salvarTrabalhosEmEventos($curriculo, $pesquisador);
-//        $this->salvarArtigosPublicados($curriculo, $pesquisador);
-//        $this->salvarCapituloDeLivroPublicado($curriculo, $pesquisador);
-
-
-        var_dump($curriculo);
-        die();
+        $pesquisador = $this->salvarPesquisador($curriculo);
+        $this->salvarFormacaoAcademica($curriculo, $pesquisador);
+        $this->salvarTrabalhosEmEventos($curriculo, $pesquisador);
+        $this->salvarArtigosPublicados($curriculo, $pesquisador);
+        $this->salvarCapituloDeLivroPublicado($curriculo, $pesquisador);
+        $this->salvarTextoEmJornalOuRevista($curriculo, $pesquisador);
+        $this->salvarArtigoAceitoParaPublicacao($curriculo, $pesquisador);
 
         return $this->render(
             'default/index.html.twig',
@@ -67,7 +71,6 @@ class DefaultController extends Controller
             ]
         );
     }
-
 
     /**
      * @param $curriculo
@@ -479,7 +482,228 @@ class DefaultController extends Controller
                 $em->flush();
             }
         }
+    }
 
+    /**
+     * @param array $curriculo
+     * @param Pesquisador $pesquisador
+     */
+    public function salvarTextoEmJornalOuRevista(array $curriculo, Pesquisador $pesquisador): void
+    {
+        if (isset(
+            $curriculo['PRODUCAO-BIBLIOGRAFICA']['TEXTOS-EM-JORNAIS-OU-REVISTAS']['TEXTO-EM-JORNAL-OU-REVISTA'])) {
+            $textosEmJornaisOuRevistas = $curriculo['PRODUCAO-BIBLIOGRAFICA']
+            ['TEXTOS-EM-JORNAIS-OU-REVISTAS']['TEXTO-EM-JORNAL-OU-REVISTA'];
+
+            foreach ($textosEmJornaisOuRevistas as $textoEmJornalOuRevista) {
+                $novoTextoEmJornalOuRevista = new TextoEmJornalOuRevistaPublicado();
+                $novoTextoEmJornalOuRevista->setSequenciaProducao(
+                    $textoEmJornalOuRevista['@attributes']['SEQUENCIA-PRODUCAO']
+                );
+
+                $dadosBasicosDoTexto = $textoEmJornalOuRevista['DADOS-BASICOS-DO-TEXTO']['@attributes'];
+                $novoTextoEmJornalOuRevista->setNatureza($dadosBasicosDoTexto['NATUREZA']);
+                $novoTextoEmJornalOuRevista->setTituloDoTexto($dadosBasicosDoTexto['TITULO-DO-TEXTO']);
+                $novoTextoEmJornalOuRevista->setAnoDoTexto($dadosBasicosDoTexto['ANO-DO-TEXTO']);
+                $novoTextoEmJornalOuRevista->setPaisDePublicacao($dadosBasicosDoTexto['PAIS-DE-PUBLICACAO']);
+                $novoTextoEmJornalOuRevista->setIdioma($dadosBasicosDoTexto['IDIOMA']);
+                $novoTextoEmJornalOuRevista->setMeioDeDivulgacao($dadosBasicosDoTexto['MEIO-DE-DIVULGACAO']);
+                $novoTextoEmJornalOuRevista->setFlagRelevancia($dadosBasicosDoTexto['FLAG-RELEVANCIA']);
+                $novoTextoEmJornalOuRevista->setDoi($dadosBasicosDoTexto['DOI']);
+                $novoTextoEmJornalOuRevista->setTituloDoTextoEmIngles($dadosBasicosDoTexto['TITULO-DO-TEXTO-INGLES']);
+                $novoTextoEmJornalOuRevista
+                    ->setFlagDivulgacaoCientifica($dadosBasicosDoTexto['FLAG-DIVULGACAO-CIENTIFICA']);
+
+                $detalhamentoDoTexto = $textoEmJornalOuRevista['DETALHAMENTO-DO-TEXTO']['@attributes'];
+                $novoTextoEmJornalOuRevista
+                    ->setTituloDoJornalOuRevista($detalhamentoDoTexto['TITULO-DO-JORNAL-OU-REVISTA']);
+                $novoTextoEmJornalOuRevista->setIssn($detalhamentoDoTexto['ISSN']);
+                $novoTextoEmJornalOuRevista
+                    ->setFormatoDataDePublicacao($detalhamentoDoTexto['FORMATO-DATA-DE-PUBLICACAO']);
+                $novoTextoEmJornalOuRevista->setDataDePublicacao($detalhamentoDoTexto['DATA-DE-PUBLICACAO']);
+                $novoTextoEmJornalOuRevista->setVolume($detalhamentoDoTexto['VOLUME']);
+                $novoTextoEmJornalOuRevista->setPaginaInicial($detalhamentoDoTexto['PAGINA-INICIAL']);
+                $novoTextoEmJornalOuRevista->setPaginaFinal($detalhamentoDoTexto['PAGINA-FINAL']);
+                $novoTextoEmJornalOuRevista->setLocalDePublicacao($detalhamentoDoTexto['LOCAL-DE-PUBLICACAO']);
+
+                $autores = $textoEmJornalOuRevista['AUTORES'];
+                foreach ($autores as $autor) {
+                    if (isset($autor['@attributes'])) {
+                        $autorTexto = new AutoresTextoEmJornalOuRevista();
+                        $autorTexto
+                            ->setNomeCompletoDoAutor($autor['@attributes']['NOME-COMPLETO-DO-AUTOR']);
+                        $autorTexto->setNomeParaCitacao($autor['@attributes']['NOME-PARA-CITACAO']);
+                        $autorTexto->setOrdemDeAutoria($autor['@attributes']['ORDEM-DE-AUTORIA']);
+                        $autorTexto->setTextoEmJornalOuRevista($novoTextoEmJornalOuRevista);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($autorTexto);
+                        $em->flush();
+                    } else {
+                        $autorTexto = new AutoresTextoEmJornalOuRevista();
+                        $autorTexto->setNomeCompletoDoAutor($autor['NOME-COMPLETO-DO-AUTOR']);
+                        $autorTexto->setNomeParaCitacao($autor['NOME-PARA-CITACAO']);
+                        $autorTexto->setOrdemDeAutoria($autor['ORDEM-DE-AUTORIA']);
+                        $autorTexto->setTextoEmJornalOuRevista($novoTextoEmJornalOuRevista);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($autorTexto);
+                        $em->flush();
+                    }
+                }
+
+                $tamanhoDoArray = sizeof($textoEmJornalOuRevista['AREAS-DO-CONHECIMENTO']);
+                for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                    $areasDoConhecimentoTexto =
+                        $textoEmJornalOuRevista['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+
+                    $areaConhecimentoTextoNovo = new AreasDoConhecimentoTextoEmJornalOuRevista();
+                    $areaConhecimentoTextoNovo
+                        ->setNomeGrandeAreaDoConhecimento(
+                            $areasDoConhecimentoTexto['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                        );
+                    $areaConhecimentoTextoNovo
+                        ->setNomeDaAreaDoConhecimento(
+                            $areasDoConhecimentoTexto['NOME-DA-AREA-DO-CONHECIMENTO']
+                        );
+                    $areaConhecimentoTextoNovo
+                        ->setNomeDaSubAreaDoConhecimento(
+                            $areasDoConhecimentoTexto['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                        );
+                    $areaConhecimentoTextoNovo
+                        ->setNomeDaEspecialidade(
+                            $areasDoConhecimentoTexto['NOME-DA-ESPECIALIDADE']
+                        );
+                    $areaConhecimentoTextoNovo->setTextoEmJornalOuRevista($novoTextoEmJornalOuRevista);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($areaConhecimentoTextoNovo);
+                    $em->flush();
+                }
+
+                $novoTextoEmJornalOuRevista->setSetoresDeAtividade(
+                    $textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']
+                );
+
+                $novoTextoEmJornalOuRevista->setInformacaoAdicional(
+                    $textoEmJornalOuRevista['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
+                );
+
+                $novoTextoEmJornalOuRevista->setPesquisador($pesquisador);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($novoTextoEmJornalOuRevista);
+                $em->flush();
+            }
+        }
+    }
+
+    /**
+     * @param array $curriculo
+     * @param Pesquisador $pesquisador
+     */
+    public function salvarArtigoAceitoParaPublicacao(array $curriculo, Pesquisador $pesquisador): void
+    {
+        if (isset(
+            $curriculo['PRODUCAO-BIBLIOGRAFICA']['ARTIGOS-ACEITOS-PARA-PUBLICACAO']['ARTIGO-ACEITO-PARA-PUBLICACAO'])) {
+            $artigosAceitosParaPublicacao =
+               $curriculo['PRODUCAO-BIBLIOGRAFICA']['ARTIGOS-ACEITOS-PARA-PUBLICACAO']['ARTIGO-ACEITO-PARA-PUBLICACAO'];
+            $curriculo['PRODUCAO-BIBLIOGRAFICA']['ARTIGOS-ACEITOS-PARA-PUBLICACAO']['ARTIGO-ACEITO-PARA-PUBLICACAO'];
+            foreach ($artigosAceitosParaPublicacao as $artigoAceitoParaPublicacao) {
+                $novoArtigoAceitoParaPublicacao = new ArtigoAceitoParaPublicacao();
+                $novoArtigoAceitoParaPublicacao
+                    ->setSequenciaProducao($artigoAceitoParaPublicacao['@attributes']['SEQUENCIA-PRODUCAO']);
+
+                $dadosBasicosDoArtigo = $artigoAceitoParaPublicacao['DADOS-BASICOS-DO-ARTIGO']['@attributes'];
+                $novoArtigoAceitoParaPublicacao->setNatureza($dadosBasicosDoArtigo['NATUREZA']);
+                $novoArtigoAceitoParaPublicacao->setTituloDoArtigo($dadosBasicosDoArtigo['TITULO-DO-ARTIGO']);
+                $novoArtigoAceitoParaPublicacao->setAnoDoArtigo($dadosBasicosDoArtigo['ANO-DO-ARTIGO']);
+                $novoArtigoAceitoParaPublicacao->setPaisDePublicacao($dadosBasicosDoArtigo['PAIS-DE-PUBLICACAO']);
+                $novoArtigoAceitoParaPublicacao->setIdioma($dadosBasicosDoArtigo['IDIOMA']);
+                $novoArtigoAceitoParaPublicacao->setMeioDeDivulgacao($dadosBasicosDoArtigo['MEIO-DE-DIVULGACAO']);
+                $novoArtigoAceitoParaPublicacao->setFlagRelevancia($dadosBasicosDoArtigo['FLAG-RELEVANCIA']);
+                $novoArtigoAceitoParaPublicacao->setDoi($dadosBasicosDoArtigo['DOI']);
+                $novoArtigoAceitoParaPublicacao
+                    ->setTituloDoArtigoEmIngles($dadosBasicosDoArtigo['TITULO-DO-ARTIGO-INGLES']);
+                $novoArtigoAceitoParaPublicacao
+                    ->setFlagDivulgacaoCientifica($dadosBasicosDoArtigo['FLAG-DIVULGACAO-CIENTIFICA']);
+
+                $detalhamentoDoArtigo = $artigoAceitoParaPublicacao['DETALHAMENTO-DO-ARTIGO']['@attributes'];
+                $novoArtigoAceitoParaPublicacao
+                    ->setTituloDoPeriodicoOuRevista($detalhamentoDoArtigo['TITULO-DO-PERIODICO-OU-REVISTA']);
+                $novoArtigoAceitoParaPublicacao->setIssn($detalhamentoDoArtigo['ISSN']);
+                $novoArtigoAceitoParaPublicacao->setVolume($detalhamentoDoArtigo['VOLUME']);
+                $novoArtigoAceitoParaPublicacao->setFasciculo($detalhamentoDoArtigo['FASCICULO']);
+                $novoArtigoAceitoParaPublicacao->setSerie($detalhamentoDoArtigo['SERIE']);
+                $novoArtigoAceitoParaPublicacao->setPaginaInicial($detalhamentoDoArtigo['PAGINA-INICIAL']);
+                $novoArtigoAceitoParaPublicacao->setPaginaFinal($detalhamentoDoArtigo['PAGINA-FINAL']);
+                $novoArtigoAceitoParaPublicacao->setLocalDePublicacao($detalhamentoDoArtigo['LOCAL-DE-PUBLICACAO']);
+
+                $autores = $artigoAceitoParaPublicacao['AUTORES'];
+                foreach ($autores as $autor) {
+                    if (isset($autor['@attributes'])) {
+                        $autorArtigoAceitoParaPublicacao = new AutoresArtigoAceitoParaPublicacao();
+                        $autorArtigoAceitoParaPublicacao
+                            ->setNomeCompletoDoAutor($autor['@attributes']['NOME-COMPLETO-DO-AUTOR']);
+                        $autorArtigoAceitoParaPublicacao
+                            ->setNomeParaCitacao($autor['@attributes']['NOME-PARA-CITACAO']);
+                        $autorArtigoAceitoParaPublicacao->setOrdemDeAutoria($autor['@attributes']['ORDEM-DE-AUTORIA']);
+                        $autorArtigoAceitoParaPublicacao
+                            ->setArtigoAceitoParaPublicacao($novoArtigoAceitoParaPublicacao);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($autorArtigoAceitoParaPublicacao);
+                        $em->flush();
+                    } else {
+                        $autorArtigoAceitoParaPublicacao = new AutoresArtigoAceitoParaPublicacao();
+                        $autorArtigoAceitoParaPublicacao->setNomeCompletoDoAutor($autor['NOME-COMPLETO-DO-AUTOR']);
+                        $autorArtigoAceitoParaPublicacao->setNomeParaCitacao($autor['NOME-PARA-CITACAO']);
+                        $autorArtigoAceitoParaPublicacao->setOrdemDeAutoria($autor['ORDEM-DE-AUTORIA']);
+                        $autorArtigoAceitoParaPublicacao
+                            ->setArtigoAceitoParaPublicacao($novoArtigoAceitoParaPublicacao);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($autorArtigoAceitoParaPublicacao);
+                        $em->flush();
+                    }
+                }
+
+                $tamanhoDoArray = sizeof($artigoAceitoParaPublicacao['AREAS-DO-CONHECIMENTO']);
+                for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                    $areasDoConhecimentoArtigoAceitoParaPublicacao =
+                        $artigoAceitoParaPublicacao['AREAS-DO-CONHECIMENTO']
+                        ['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+
+                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo =
+                        new AreasDoConhecimentoArtigoAceitoParaPublicacao();
+                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                        ->setNomeGrandeAreaDoConhecimento(
+                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                        );
+                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                        ->setNomeDaAreaDoConhecimento(
+                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-AREA-DO-CONHECIMENTO']
+                        );
+                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                        ->setNomeDaSubAreaDoConhecimento(
+                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                        );
+                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                        ->setNomeDaEspecialidade(
+                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-ESPECIALIDADE']
+                        );
+                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                        ->setArtigoAceitoParaPublicacao($novoArtigoAceitoParaPublicacao);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($areasDoConhecimentoArtigoAceitoParaPublicacaoNovo);
+                    $em->flush();
+                }
+
+                $novoArtigoAceitoParaPublicacao
+                    ->setSetoresDeAtividade(
+                        $artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']
+                    );
+
+                $novoArtigoAceitoParaPublicacao->setPesquisador($pesquisador);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($novoArtigoAceitoParaPublicacao);
+                $em->flush();
+            }
+        }
     }
 
 }
