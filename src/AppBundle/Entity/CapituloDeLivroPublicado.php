@@ -191,11 +191,11 @@ class CapituloDeLivroPublicado
     private $areasDoConhecimento;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="setor_de_atividade", type="string", length=255, nullable=true)
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SetoresDeAtividadeCapituloDeLivroPublicado",
+     *     mappedBy="capituloDeLivroPublicado", cascade={"persist", "remove"})
      */
-    private $setorDeAtividade;
+    private $setoresDeAtividade;
 
     /**
      * @var string
@@ -209,6 +209,7 @@ class CapituloDeLivroPublicado
     {
         $this->autores = new ArrayCollection();
         $this->areasDoConhecimento = new ArrayCollection();
+        $this->setoresDeAtividade = new ArrayCollection();
     }
 
     /**
@@ -764,27 +765,27 @@ class CapituloDeLivroPublicado
     }
 
     /**
-     * Set setorDeAtividade
+     * Set setoresDeAtividade
      *
-     * @param string $setorDeAtividade
+     * @param string $setoresDeAtividade
      *
      * @return CapituloDeLivroPublicado
      */
-    public function setSetorDeAtividade($setorDeAtividade)
+    public function setSetoresDeAtividade($setoresDeAtividade)
     {
-        $this->setorDeAtividade = $setorDeAtividade;
+        $this->setoresDeAtividade = $setoresDeAtividade;
 
         return $this;
     }
 
     /**
-     * Get setorDeAtividade
+     * Get setoresDeAtividade
      *
      * @return string
      */
-    public function getSetorDeAtividade()
+    public function getSetoresDeAtividade()
     {
-        return $this->setorDeAtividade;
+        return $this->setoresDeAtividade;
     }
 
     /**

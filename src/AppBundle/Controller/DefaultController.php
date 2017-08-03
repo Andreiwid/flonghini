@@ -6,6 +6,7 @@ use AppBundle\Entity\AreasDoConhecimentoArtigo;
 use AppBundle\Entity\AreasDoConhecimentoArtigoAceitoParaPublicacao;
 use AppBundle\Entity\AreasDoConhecimentoCapituloDeLivro;
 use AppBundle\Entity\AreasDoConhecimentoTextoEmJornalOuRevista;
+use AppBundle\Entity\AreasDoConhecimentoTrabalhoEmEvento;
 use AppBundle\Entity\ArtigoAceitoParaPublicacao;
 use AppBundle\Entity\ArtigosPublicados;
 use AppBundle\Entity\AutoresArtigoAceitoParaPublicacao;
@@ -16,6 +17,11 @@ use AppBundle\Entity\AutoresTrabalhosEmEventos;
 use AppBundle\Entity\CapituloDeLivroPublicado;
 use AppBundle\Entity\FormacaoAcademica;
 use AppBundle\Entity\Pesquisador;
+use AppBundle\Entity\SetoresDeAtividadeArtigoAceitoParaPublicacao;
+use AppBundle\Entity\SetoresDeAtividadeArtigosPublicados;
+use AppBundle\Entity\SetoresDeAtividadeCapituloDeLivroPublicado;
+use AppBundle\Entity\SetoresDeAtividadeTextoEmJornalOuRevista;
+use AppBundle\Entity\SetoresDeAtividadeTrabalhoEmEvento;
 use AppBundle\Entity\TextoEmJornalOuRevistaPublicado;
 use AppBundle\Entity\TrabalhosEmEventos;
 use AppBundle\Services\DefaultService;
@@ -55,6 +61,14 @@ class DefaultController extends Controller
             $json = json_encode($cv);
             $curriculo = json_decode($json, true);
         }
+
+//        var_dump($curriculo['PRODUCAO-BIBLIOGRAFICA']['TEXTOS-EM-JORNAIS-OU-REVISTAS']['TEXTO-EM-JORNAL-OU-REVISTA']);
+//        die();
+//
+//        foreach ($curriculo['PRODUCAO-BIBLIOGRAFICA']['TEXTOS-EM-JORNAIS-OU-REVISTAS']['TEXTO-EM-JORNAL-OU-REVISTA'] as $setoresDeAtividade) {
+//            var_dump($setoresDeAtividade['SETORES-DE-ATIVIDADE']);
+//        }
+//        die();
 
         $pesquisador = $this->salvarPesquisador($curriculo);
         $this->salvarFormacaoAcademica($curriculo, $pesquisador);
@@ -231,17 +245,65 @@ class DefaultController extends Controller
                         $trabalhoEmEvento->setNomeDaEditora($detalhamentoDoTrabalho['NOME-DA-EDITORA']);
                         $trabalhoEmEvento->setCidadeDaEditora($detalhamentoDoTrabalho['CIDADE-DA-EDITORA']);
 
-                        $areasDoConhecimento =
-                            $trabalho['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-1']['@attributes'];
-                        $trabalhoEmEvento
-                            ->setNomeGrandeAreaDoConhecimento($areasDoConhecimento['NOME-GRANDE-AREA-DO-CONHECIMENTO']);
-                        $trabalhoEmEvento
-                            ->setNomeAreaDoConhecimento($areasDoConhecimento['NOME-DA-AREA-DO-CONHECIMENTO']);
-                        $trabalhoEmEvento
-                            ->setNomeDaSubAreaDoConhecimento($areasDoConhecimento['NOME-DA-SUB-AREA-DO-CONHECIMENTO']);
-                        $trabalhoEmEvento->setNomeDaEspecialidade($areasDoConhecimento['NOME-DA-ESPECIALIDADE']);
-                        $trabalhoEmEvento->setPesquisador($pesquisador);
+                        $tamanhoDoArray = sizeof($trabalho['AREAS-DO-CONHECIMENTO']);
+                        for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                            $areasDoConhecimento =
+                                $trabalho['AREAS-DO-CONHECIMENTO']
+                                ['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
 
+                            $areasDoConhecimentoTrabalhoEmEvento =
+                                new AreasDoConhecimentoTrabalhoEmEvento();
+                            $areasDoConhecimentoTrabalhoEmEvento
+                                ->setNomeGrandeAreaDoConhecimento(
+                                    $areasDoConhecimento['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                                );
+                            $areasDoConhecimentoTrabalhoEmEvento
+                                ->setNomeAreaDoConhecimento(
+                                    $areasDoConhecimento['NOME-DA-AREA-DO-CONHECIMENTO']
+                                );
+                            $areasDoConhecimentoTrabalhoEmEvento
+                                ->setNomeDaSubAreaDoConhecimento(
+                                    $areasDoConhecimento['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                                );
+                            $areasDoConhecimentoTrabalhoEmEvento
+                                ->setNomeDaEspecialidade(
+                                    $areasDoConhecimento['NOME-DA-ESPECIALIDADE']
+                                );
+                            $areasDoConhecimentoTrabalhoEmEvento
+                                ->setTrabalhoEmEvento($trabalhoEmEvento);
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($areasDoConhecimentoTrabalhoEmEvento);
+                            $em->flush();
+                        }
+
+                        if (isset($trabalho['SETORES-DE-ATIVIDADE']['@attributes'])) {
+                            $setorDeAtividadeNovo =
+                                new SetoresDeAtividadeTrabalhoEmEvento();
+
+                            if (isset($trabalho['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1'])) {
+                                $setorDeAtividadeNovo
+                                    ->setSetorDeAtividade1($trabalho['SETORES-DE-ATIVIDADE']
+                                    ['@attributes']['SETOR-DE-ATIVIDADE-1']);
+                            }
+
+                            if (isset($trabalho['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-2'])) {
+                                $setorDeAtividadeNovo
+                                    ->setSetorDeAtividade2($trabalho['SETORES-DE-ATIVIDADE']
+                                    ['@attributes']['SETOR-DE-ATIVIDADE-2']);
+                            }
+
+                            if (isset($trabalho['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-3'])) {
+                                $setorDeAtividadeNovo
+                                    ->setSetorDeAtividade3($trabalho['SETORES-DE-ATIVIDADE']
+                                    ['@attributes']['SETOR-DE-ATIVIDADE-3']);
+                            }
+                            $setorDeAtividadeNovo->setTrabalhoEmEvento($trabalhoEmEvento);
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($setorDeAtividadeNovo);
+                            $em->flush();
+                        }
+
+                        $trabalhoEmEvento->setPesquisador($pesquisador);
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($trabalhoEmEvento);
                         $em->flush();
@@ -311,8 +373,6 @@ class DefaultController extends Controller
                     $artigoPublicado->setPaginaFinal($detalhamentoDoArtigo['PAGINA-FINAL']);
                     $artigoPublicado->setLocalDePublicacao($detalhamentoDoArtigo['LOCAL-DE-PUBLICACAO']);
                     $artigoPublicado
-                        ->setSetoresDeAtividade($artigo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']);
-                    $artigoPublicado
                         ->setInformacaoAdicional(
                             $artigo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
                         );
@@ -321,6 +381,33 @@ class DefaultController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($artigoPublicado);
                     $em->flush();
+
+                    if (isset($artigo['SETORES-DE-ATIVIDADE']['@attributes'])) {
+                        $setorDeAtividadeNovo =
+                            new SetoresDeAtividadeArtigosPublicados();
+
+                        if (isset($artigo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1'])) {
+                            $setorDeAtividadeNovo
+                                ->setSetorDeAtividade1($artigo['SETORES-DE-ATIVIDADE']
+                                ['@attributes']['SETOR-DE-ATIVIDADE-1']);
+                        }
+
+                        if (isset($artigo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-2'])) {
+                            $setorDeAtividadeNovo
+                                ->setSetorDeAtividade2($artigo['SETORES-DE-ATIVIDADE']
+                                ['@attributes']['SETOR-DE-ATIVIDADE-2']);
+                        }
+
+                        if (isset($artigo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-3'])) {
+                            $setorDeAtividadeNovo
+                                ->setSetorDeAtividade3($artigo['SETORES-DE-ATIVIDADE']
+                                ['@attributes']['SETOR-DE-ATIVIDADE-3']);
+                        }
+                        $setorDeAtividadeNovo->setArtigoPublicado($artigoPublicado);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($setorDeAtividadeNovo);
+                        $em->flush();
+                    }
 
                     $tamanhoDoArray = sizeof($artigo['AREAS-DO-CONHECIMENTO']);
                     for ($x = 1; $x <= $tamanhoDoArray; $x++) {
@@ -419,8 +506,6 @@ class DefaultController extends Controller
                 $capituloDeLivro->setNomeDaEditora($detalhamentoDoCapitulo['NOME-DA-EDITORA']);
 
                 $capituloDeLivro
-                    ->setSetorDeAtividade($capitulo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']);
-                $capituloDeLivro
                     ->setInformacaoAdicional(
                         $capitulo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
                     );
@@ -476,6 +561,34 @@ class DefaultController extends Controller
                     $em->persist($areaConhecimentoCapituloNovo);
                     $em->flush();
                 }
+
+                if (isset($capitulo['SETORES-DE-ATIVIDADE']['@attributes'])) {
+                    $setorDeAtividadeNovo =
+                        new SetoresDeAtividadeCapituloDeLivroPublicado();
+
+                    if (isset($capitulo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade1($capitulo['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-1']);
+                    }
+
+                    if (isset($capitulo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-2'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade2($capitulo['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-2']);
+                    }
+
+                    if (isset($capitulo['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-3'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade3($capitulo['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-3']);
+                    }
+                    $setorDeAtividadeNovo->setCapituloDeLivroPublicado($capituloDeLivro);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($setorDeAtividadeNovo);
+                    $em->flush();
+                }
+
                 $capituloDeLivro->setPesquisador($pesquisador);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($capituloDeLivro);
@@ -578,13 +691,39 @@ class DefaultController extends Controller
                     $em->flush();
                 }
 
-                $novoTextoEmJornalOuRevista->setSetoresDeAtividade(
-                    $textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']
-                );
-
                 $novoTextoEmJornalOuRevista->setInformacaoAdicional(
                     $textoEmJornalOuRevista['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
                 );
+
+                if (isset($textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']['@attributes'])) {
+                    $setorDeAtividadeNovo =
+                        new SetoresDeAtividadeTextoEmJornalOuRevista();
+
+                    if (isset($textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']['@attributes']
+                        ['SETOR-DE-ATIVIDADE-1'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade1($textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-1']);
+                    }
+
+                    if (isset($textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']['@attributes']
+                        ['SETOR-DE-ATIVIDADE-2'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade2($textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-2']);
+                    }
+
+                    if (isset($textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']['@attributes']
+                        ['SETOR-DE-ATIVIDADE-3'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade3($textoEmJornalOuRevista['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-3']);
+                    }
+                    $setorDeAtividadeNovo->setTextoEmJornalOuRevista($novoTextoEmJornalOuRevista);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($setorDeAtividadeNovo);
+                    $em->flush();
+                }
 
                 $novoTextoEmJornalOuRevista->setPesquisador($pesquisador);
                 $em = $this->getDoctrine()->getManager();
@@ -693,10 +832,35 @@ class DefaultController extends Controller
                     $em->flush();
                 }
 
-                $novoArtigoAceitoParaPublicacao
-                    ->setSetoresDeAtividade(
-                        $artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']['@attributes']['SETOR-DE-ATIVIDADE-1']
-                    );
+                if (isset($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']['@attributes'])) {
+                    $setorDeAtividadeNovo =
+                        new SetoresDeAtividadeArtigoAceitoParaPublicacao();
+
+                    if (isset($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']['@attributes']
+                        ['SETOR-DE-ATIVIDADE-1'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade1($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-1']);
+                    }
+
+                    if (isset($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']['@attributes']
+                        ['SETOR-DE-ATIVIDADE-2'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade2($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-2']);
+                    }
+
+                    if (isset($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']['@attributes']
+                        ['SETOR-DE-ATIVIDADE-3'])) {
+                        $setorDeAtividadeNovo
+                            ->setSetorDeAtividade3($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']
+                            ['@attributes']['SETOR-DE-ATIVIDADE-3']);
+                    }
+                    $setorDeAtividadeNovo->setArtigoAceitoParaPublicacao($novoArtigoAceitoParaPublicacao);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($setorDeAtividadeNovo);
+                    $em->flush();
+                }
 
                 $novoArtigoAceitoParaPublicacao->setPesquisador($pesquisador);
                 $em = $this->getDoctrine()->getManager();

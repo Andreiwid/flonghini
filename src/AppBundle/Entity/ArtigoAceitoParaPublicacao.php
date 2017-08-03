@@ -177,9 +177,9 @@ class ArtigoAceitoParaPublicacao
     private $areasDoConhecimento;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="setores_de_atividade", type="string", length=255, nullable=true)
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SetoresDeAtividadeArtigoAceitoParaPublicacao", mappedBy="artigoPublicado",
+     *     cascade={"persist", "remove"})
      */
     private $setoresDeAtividade;
 
@@ -194,6 +194,7 @@ class ArtigoAceitoParaPublicacao
     {
         $this->autores = new ArrayCollection();
         $this->areasDoConhecimento = new ArrayCollection();
+        $this->setoresDeAtividade = new ArrayCollection();
     }
 
     /**

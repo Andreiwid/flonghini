@@ -28,9 +28,10 @@ class FormacaoAcademica
     private $pesquisador;
 
     /**
-     * @var int
+     * @var GrauDeFormacao
      *
-     * @ORM\Column(name="grau_de_formacao", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GrauDeFormacao")
+     * @ORM\JoinColumn(name="grau_de_formacao_id", referencedColumnName="id")
      */
     private $grauDeFormacao;
 
