@@ -49,7 +49,7 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/curriculo", name="curriculo")
      */
     public function indexAction(Request $request)
     {
@@ -62,11 +62,12 @@ class DefaultController extends Controller
             $curriculo = json_decode($json, true);
         }
 
-//        var_dump($curriculo['PRODUCAO-BIBLIOGRAFICA']['TEXTOS-EM-JORNAIS-OU-REVISTAS']['TEXTO-EM-JORNAL-OU-REVISTA']);
-//        die();
 //
-//        foreach ($curriculo['PRODUCAO-BIBLIOGRAFICA']['TEXTOS-EM-JORNAIS-OU-REVISTAS']['TEXTO-EM-JORNAL-OU-REVISTA'] as $setoresDeAtividade) {
-//            var_dump($setoresDeAtividade['SETORES-DE-ATIVIDADE']);
+//        var_dump('teste');
+//        die();
+
+//        foreach ($curriculo['DADOS-GERAIS']['FORMACAO-ACADEMICA-TITULACAO']['GRADUACAO'] as $setoresDeAtividade) {
+//            var_dump((int)$setoresDeAtividade['@attributes']['NIVEL']);
 //        }
 //        die();
 

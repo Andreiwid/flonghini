@@ -28,38 +28,37 @@ class FormacaoAcademica
     private $pesquisador;
 
     /**
-     * @var GrauDeFormacao
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GrauDeFormacao")
-     * @ORM\JoinColumn(name="grau_de_formacao_id", referencedColumnName="id")
+     * @ORM\Column(name="grau_de_formacao", type="string", length=255, nullable=true)
      */
     private $grauDeFormacao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="instituicao", type="string", length=255)
+     * @ORM\Column(name="instituicao", type="string", length=255, nullable=true)
      */
     private $instituicao;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="curso", type="string", length=255)
+     * @ORM\Column(name="curso", type="string", length=255, nullable=true)
      */
     private $curso;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ano_inicio", type="string", length=4)
+     * @ORM\Column(name="ano_inicio", type="string", length=4, nullable=true)
      */
     private $anoInicio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ano_fim",  type="string", length=4)
+     * @ORM\Column(name="ano_fim",  type="string", length=4, nullable=true)
      */
     private $anoFim;
 
