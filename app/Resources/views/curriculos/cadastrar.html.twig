@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+
+{% block body_content %}
+    {{ parent() }}
+    {% block breadcrumb %}<i class="fa-fw fa fa-file-text-o"></i><li>Home</li>
+        <li>Dashboard</li>{% endblock %}
+    <div id="content">
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+            <div class="row">
+
+                <!-- NEW WIDGET START -->
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget jarviswidget-color-red" id="wid-id-3" data-widget-colorbutton="false"
+                         data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false">
+                        <!-- widget options:
+                            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                            data-widget-colorbutton="false"
+                            data-widget-editbutton="false"
+                            data-widget-togglebutton="false"
+                            data-widget-deletebutton="false"
+                            data-widget-fullscreenbutton="false"
+                            data-widget-custombutton="false"
+                            data-widget-collapsed="true"
+                            data-widget-sortable="false"
+
+                        -->
+                        <header>
+                            <h2><strong>Cadastrar</strong></h2>
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <!-- widget content -->
+                            <div class="widget-body">
+                                <form action="{{ path('salvar_curriculo') }}" class="smart-form" name="salvar_curriculo_form">
+                                    <header>
+                                        Selecione o currículo para cadastrar
+                                    </header>
+
+                                    <fieldset>
+                                        <section>
+                                            <label class="label">Currículo:</label>
+                                            <label for="file" class="input input-file">
+                                                <div class="button">
+                                                    <input type="file" name="file" onchange="this.parentNode.nextSibling.value = this.value">
+                                                    Selecionar arquivo</div><input type="text" placeholder="Incluir arquivo" readonly="">
+                                            </label>
+                                        </section>
+                                    </fieldset>
+
+                                    <footer>
+                                        <button type="submit" class="btn btn-success">
+                                            Salvar
+                                        </button>
+                                    </footer>
+                                </form>
+                            </div>
+                            <!-- end widget content -->
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+                <!-- WIDGET END -->
+            </div>
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+    </div>
+    <!-- END MAIN CONTENT -->
+{% endblock %}

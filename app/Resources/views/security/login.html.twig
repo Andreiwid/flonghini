@@ -1,19 +1,114 @@
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+{% extends '::base_login_register.html.twig' %}
 
-<form action="{{ path('login') }}" method="post">
-    <label for="username">Usuário:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+{% block body %}
+    <body class="animated fadeInDown">
 
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="_password" />
+        <header id="header">
 
-    {#
-        If you want to control the URL the user
-        is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
+            <div id="logo-group">
+                {#<span id="logo"> <img src="{{ asset('img/logo_dummy.png') }}" alt="SmartAdmin"> </span>#}
+            </div>
 
-    <button type="submit">login</button>
-</form>
+            <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Não possui uma conta registrada ?</span>
+                <a href="{{ path('user_registration') }}" class="btn btn-danger">Criar uma conta</a> </span>
+
+        </header>
+
+        <div id="main" role="main">
+
+            <!-- MAIN CONTENT -->
+            <div id="content" class="container">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+                        <h1 class="txt-color-red login-header-big">Sistema TCC CNPq Currículo Lattes</h1>
+                        <div class="hero">
+
+                            <div class="pull-left login-desc-box-l">
+                                <h4 class="paragraph-header">Resumo sobre o sistema aqui</h4>
+
+                            </div>
+
+                            {#<img src="{{ asset('img/logo_dummy.png') }}" class="pull-right display-image" alt="" style="width:210px">#}
+
+                        </div>
+
+                        {#<div class="row">#}
+                            {#<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">#}
+                                {#<h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>#}
+                                {#<p>#}
+                                    {#Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.#}
+                                {#</p>#}
+                            {#</div>#}
+                            {#<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">#}
+                                {#<h5 class="about-heading">Not just your average template!</h5>#}
+                                {#<p>#}
+                                    {#Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!#}
+                                {#</p>#}
+                            {#</div>#}
+                        {#</div>#}
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+                        <div class="well no-padding">
+                            <form action="{{ path('login') }}" id="login-form" class="smart-form client-form" method="post">
+
+                                {% if error %}
+                                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                <header>
+                                    Entrar
+                                </header>
+
+                                <fieldset>
+                                    <section>
+                                        <label class="label" for="username">Usuário:</label>
+                                        <label class="input"> <i class="icon-append fa fa-user"></i>
+                                            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                                            <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
+                                                Usuário</b></label>
+                                    </section>
+
+                                    <section>
+                                        <label class="label" for="password">Senha:</label>
+                                        <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                            <input type="password" id="password" name="_password" />
+                                            <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i>
+                                                Senha</b> </label>
+                                        {#<div class="note">#}
+                                            {#<a href="forgotpassword.html">Forgot password?</a>#}
+                                        {#</div>#}
+                                    </section>
+
+                                    {#<section>#}
+                                        {#<label class="checkbox">#}
+                                            {#<input type="checkbox" name="remember" checked="">#}
+                                            {#<i></i>Stay signed in</label>#}
+                                    {#</section>#}
+
+                                    {#If you want to control the URL the user#}
+                                    {#is redirected to on success (more details below)#}
+                                    <input type="hidden" name="_target_path" value="/account" />
+                                </fieldset>
+
+                                <footer>
+                                    <button type="submit" class="btn btn-primary">
+                                        Entrar
+                                    </button>
+                                </footer>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+{% endblock %}
+
+{% block body_scripts %}
+{% endblock %}
+
+

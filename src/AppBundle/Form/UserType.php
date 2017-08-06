@@ -16,13 +16,57 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('username', TextType::class)
-            ->add('plainPassword', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
-            ))
+            ->add(
+                'email',
+                EmailType::class,
+                [
+                    'label' => 'Email:',
+                    'label_attr' => [
+                        'class' => 'form-control-label',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => 'Digite o email',
+                        'maxlength' => '255',
+                    ],
+                    'required' => true
+                ]
+            )
+            ->add(
+                'username',
+                TextType::class,
+                [
+                    'label' => 'Nome do usuário:',
+                    'label_attr' => [
+                        'class' => 'form-control-label',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => 'Digite o nome do usuário',
+                        'maxlength' => '255',
+                    ],
+                    'required' => true,
+                    'mapped' => false
+                ]
+            )
+            ->add('plainPassword',
+                RepeatedType::class,
+                [
+                    'type' => PasswordType::class,
+                    'first_options'  => [
+                        'label' => 'Senha'
+                    ],
+                    'second_options' => [
+                        'label' => 'Repetir senha'
+                    ],
+                    'label_attr' => [
+                        'class' => 'form-control-label',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
+                ]
+            )
         ;
     }
 

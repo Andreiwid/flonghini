@@ -1,8 +1,234 @@
-{{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
+{% extends '::base_login_register.html.twig' %}
 
-<button type="submit">Registrar!</button>
-{{ form_end(form) }}
+{% block body %}
+
+    <body id="login">
+
+        <header id="header">
+            <!--<span id="logo"></span>-->
+
+            <div id="logo-group">
+                {#<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>#}
+
+                <!-- END AJAX-DROPDOWN -->
+            </div>
+
+            <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Já possui uma conta ?</span>
+                <a href="{{ path('login') }}" class="btn btn-danger">Acessar</a> </span>
+
+        </header>
+
+        <div id="main" role="main">
+
+            <!-- MAIN CONTENT -->
+            <div id="content" class="container">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+                        <h1 class="txt-color-red login-header-big">Sistema TCC CNPq Currículo Lattes</h1>
+                        <div class="hero">
+
+                            <div class="pull-left login-desc-box-l">
+                                <h4 class="paragraph-header">Resumo sobre o sistema aqui</h4>
+                            </div>
+
+                            {#<img src="img/demo/iphoneview.png" alt="" class="pull-right display-image" style="width:210px">#}
+
+                        </div>
+
+                        {#<div class="row">#}
+                            {#<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">#}
+                                {#<h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>#}
+                                {#<p>#}
+                                    {#Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.#}
+                                {#</p>#}
+                            {#</div>#}
+                            {#<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">#}
+                                {#<h5 class="about-heading">Not just your average template!</h5>#}
+                                {#<p>#}
+                                    {#Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!#}
+                                {#</p>#}
+                            {#</div>#}
+                        {#</div>#}
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                        <div class="well no-padding">
+
+                            {{ form_start(form) }}
+
+                                {{ form_row(form.username) }}
+                                {{ form_row(form.email) }}
+                                {{ form_row(form.plainPassword.first) }}
+                                {{ form_row(form.plainPassword.second) }}
+
+
+                            <button type="submit">Registrar!</button>
+
+                            {{ form_end(form, {'username': false}) }}
+
+
+
+                            {#<form action="{{ path('user_registration') }}" id="smart-form-register"#}
+                                  {#class="smart-form client-form" novalidate="novalidate" name="app_bundle_user_type"#}
+                                  {#method="post">#}
+                                {#<header>#}
+                                    {#Registre-se#}
+                                {#</header>#}
+
+                                {#<fieldset>#}
+                                    {#<section>#}
+                                        {#<label class="input"> <i class="icon-append fa fa-user"></i>#}
+                                            {#<input type="text" name="username" placeholder="Username">#}
+                                            {#<input type="text" id="app_bundle_user_type_username" name="app_bundle_user_type[username]"#}
+                                                   {#required="required" class="form-control" placeholder="Usuário"#}
+                                                   {#maxlength="255">#}
+                                            {#<b class="tooltip tooltip-bottom-right">Digite o nome do usuário</b> </label>#}
+                                    {#</section>#}
+
+                                    {#<section>#}
+                                        {#<label class="input"> <i class="icon-append fa fa-envelope"></i>#}
+                                            {#<input type="email" id="app_bundle_user_type_email" name="app_bundle_user_type[email]"#}
+                                                   {#required="required" class="form-control" placeholder="Email" maxlength="255">#}
+                                            {#<b class="tooltip tooltip-bottom-right">Digite o email</b> </label>#}
+                                    {#</section>#}
+
+                                    {#<section>#}
+                                        {#<label class="input"> <i class="icon-append fa fa-lock"></i>#}
+                                            {#<input type="password" id="app_bundle_user_type_plainPassword_first"#}
+                                                   {#name="app_bundle_user_type[plainPassword][first]" required="required"#}
+                                                   {#placeholder="Senha">#}
+                                            {#<b class="tooltip tooltip-bottom-right">Digite uma senha</b> </label>#}
+                                    {#</section>#}
+
+                                    {#<section>#}
+                                        {#<label class="input"> <i class="icon-append fa fa-lock"></i>#}
+                                            {#<input type="password" id="app_bundle_user_type_plainPassword_second"#}
+                                                   {#name="app_bundle_user_type[plainPassword][second]" required="required"#}
+                                                   {#placeholder="Repetir senha">#}
+                                            {#<b class="tooltip tooltip-bottom-right">Digite a mesma senha novamente</b> </label>#}
+                                    {#</section>#}
+                                {#</fieldset>#}
+
+
+                                {#<footer>#}
+                                    {#<button type="submit" class="btn btn-primary">#}
+                                        {#Registrar#}
+                                    {#</button>#}
+                                {#</footer>#}
+
+                                {#<div class="message">#}
+                                    {#<i class="fa fa-check"></i>#}
+                                    {#<p>#}
+                                        {#Obrigado por se registrar!#}
+                                    {#</p>#}
+                                {#</div>#}
+                            {#</form>#}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+
+{% endblock %}
+
+{% block body_scripts %}
+    {{ parent() }}
+    <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+    <script src="{{ asset('js/plugin/pace/pace.min.js') }}"></script>
+
+    <script type="text/javascript">
+        runAllForms();
+
+        // Validation
+        $(function() {
+            // Validation
+            $("#smart-form-register").validate({
+
+                // Rules for form validation
+                rules : {
+                    username : {
+                        required : true
+                    },
+                    email : {
+                        required : true,
+                        email : true
+                    },
+                    password : {
+                        required : true,
+                        minlength : 3,
+                        maxlength : 20
+                    },
+                    passwordConfirm : {
+                        required : true,
+                        minlength : 3,
+                        maxlength : 20,
+                        equalTo : '#password'
+                    },
+                    firstname : {
+                        required : true
+                    },
+                    lastname : {
+                        required : true
+                    },
+                    gender : {
+                        required : true
+                    },
+                    terms : {
+                        required : true
+                    }
+                },
+
+                // Messages for form validation
+                messages : {
+                    login : {
+                        required : 'Please enter your login'
+                    },
+                    email : {
+                        required : 'Please enter your email address',
+                        email : 'Please enter a VALID email address'
+                    },
+                    password : {
+                        required : 'Please enter your password'
+                    },
+                    passwordConfirm : {
+                        required : 'Please enter your password one more time',
+                        equalTo : 'Please enter the same password as above'
+                    },
+                    firstname : {
+                        required : 'Please select your first name'
+                    },
+                    lastname : {
+                        required : 'Please select your last name'
+                    },
+                    gender : {
+                        required : 'Please select your gender'
+                    },
+                    terms : {
+                        required : 'You must agree with Terms and Conditions'
+                    }
+                },
+
+                // Ajax form submition
+                submitHandler : function(form) {
+                    $(form).ajaxSubmit({
+                        success : function() {
+                            $("#smart-form-register").addClass('submited');
+                        }
+                    });
+                },
+
+                // Do not change code below
+                errorPlacement : function(error, element) {
+                    error.insertAfter(element.parent());
+                }
+            });
+
+        });
+    </script>
+{% endblock %}
