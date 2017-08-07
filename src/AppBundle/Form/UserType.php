@@ -45,8 +45,7 @@ class UserType extends AbstractType
                         'placeholder' => 'Digite o nome do usuário',
                         'maxlength' => '255',
                     ],
-                    'required' => true,
-                    'mapped' => false
+                    'required' => true
                 ]
             )
             ->add('plainPassword',

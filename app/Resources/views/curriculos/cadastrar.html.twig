@@ -2,8 +2,12 @@
 
 {% block body_content %}
     {{ parent() }}
-    {% block breadcrumb %}<i class="fa-fw fa fa-file-text-o"></i><li>Home</li>
-        <li>Dashboard</li>{% endblock %}
+    {% block breadcrumb %}
+        <ol class="breadcrumb">
+            <i class="fa-fw fa fa-file-text-o"></i><li>Currículo</li>
+            <li>Cadastrar</li>
+        </ol>
+    {% endblock %}
     <div id="content">
         <!-- widget grid -->
         <section id="widget-grid" class="">
@@ -42,28 +46,31 @@
 
                             <!-- widget content -->
                             <div class="widget-body">
-                                <form action="{{ path('salvar_curriculo') }}" class="smart-form" name="salvar_curriculo_form">
-                                    <header>
-                                        Selecione o currículo para cadastrar
-                                    </header>
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                {{ form_end(form) }}
+                                {#<form action="{{ path('salvar_curriculo') }}" method="post" class="smart-form" name="salvar_curriculo_form" id="salvar_curriculo_form">#}
+                                    {#<header>#}
+                                        {#Selecione o currículo para cadastrar#}
+                                    {#</header>#}
 
-                                    <fieldset>
-                                        <section>
-                                            <label class="label">Currículo:</label>
-                                            <label for="file" class="input input-file">
-                                                <div class="button">
-                                                    <input type="file" name="file" onchange="this.parentNode.nextSibling.value = this.value">
-                                                    Selecionar arquivo</div><input type="text" placeholder="Incluir arquivo" readonly="">
-                                            </label>
-                                        </section>
-                                    </fieldset>
+                                    {#<fieldset>#}
+                                        {#<section>#}
+                                            {#<label class="label">Currículo:</label>#}
+                                            {#<label for="file" class="input input-file">#}
+                                                {#<div class="button">#}
+                                                    {#<input type="file" name="file" id="file" onchange="this.parentNode.nextSibling.value = this.value">#}
+                                                    {#Selecionar arquivo</div><input type="text" placeholder="Incluir arquivo" readonly="">#}
+                                            {#</label>#}
+                                        {#</section>#}
+                                    {#</fieldset>#}
 
-                                    <footer>
-                                        <button type="submit" class="btn btn-success">
-                                            Salvar
-                                        </button>
-                                    </footer>
-                                </form>
+                                    {#<footer>#}
+                                        {#<button type="submit" class="btn btn-success">#}
+                                            {#Salvar#}
+                                        {#</button>#}
+                                    {#</footer>#}
+                                {#</form>#}
                             </div>
                             <!-- end widget content -->
                         </div>
