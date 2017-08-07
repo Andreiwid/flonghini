@@ -290,13 +290,16 @@
 
                 <ul>
                     <li class="active">
-                        <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
+                        <a href="{{ path('home') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
                     </li>
                     <li class="active">
                         <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-file-text-o"></i> <span class="menu-item-parent">Currículos</span></a>
                         <ul>
                             <li class="active">
                                 <a href="{{ path('cadastrar') }}" title="Dashboard"><span class="menu-item-parent">Cadastrar</span></a>
+                            </li>
+                            <li class="active">
+                                <a href="{{ path('listar_curriculos') }}" title="Dashboard"><span class="menu-item-parent">Listar</span></a>
                             </li>
                         </ul>
                     </li>

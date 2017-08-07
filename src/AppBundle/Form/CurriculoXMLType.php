@@ -13,8 +13,8 @@ class CurriculoXMLType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FileType::class, ['label' => 'Currículo (Formato XML)'])
-            ->add('save', SubmitType::class)
+            ->add('file', FileType::class, ['label' => 'Currículo (Formato XML):'])
+            ->add('save', SubmitType::class, ['label' => 'Salvar'])
         ;
     }
 

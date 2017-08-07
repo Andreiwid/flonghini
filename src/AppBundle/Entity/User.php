@@ -39,6 +39,8 @@ class User implements UserInterface
      */
     private $plainPassword;
 
+
+
     /**
      * The below length depends on the "algorithm" you use for encoding
      * the password, but this works well with bcrypt.
@@ -47,7 +49,13 @@ class User implements UserInterface
      */
     private $password;
 
-    // other properties and methods
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getEmail()
     {

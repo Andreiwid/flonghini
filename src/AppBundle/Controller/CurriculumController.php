@@ -83,6 +83,20 @@ class CurriculumController extends Controller
         );
     }
 
+    /**
+     * @Route("/curriculo/listar", name="listar_curriculos")
+     */
+    public function listAction()
+    {
+
+        return $this->render(
+            'curriculos/listar.html.twig'
+//            [
+//                'form' => $form->createView(),
+//            ]
+        );
+    }
+
     public function saveAction(): void
     {
         $finder = new Finder();

@@ -24,7 +24,10 @@ use AppBundle\Entity\SetoresDeAtividadeTextoEmJornalOuRevista;
 use AppBundle\Entity\SetoresDeAtividadeTrabalhoEmEvento;
 use AppBundle\Entity\TextoEmJornalOuRevistaPublicado;
 use AppBundle\Entity\TrabalhosEmEventos;
+use AppBundle\Entity\User;
+use AppBundle\Entity\UsersPesquisadores;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class CurriculumService
 {
@@ -34,12 +37,19 @@ class CurriculumService
     private $entityManager;
 
     /**
+     * @var Container
+     */
+    private $container;
+
+    /**
      * CurriculumService constructor.
      * @param EntityManager $entityManager
+     * @param Container $container
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, Container $container)
     {
         $this->entityManager = $entityManager;
+        $this->container = $container;
     }
 
     /**
@@ -54,6 +64,17 @@ class CurriculumService
         $pesquisador->setNomeEmCitacoes($curriculo['DADOS-GERAIS']['@attributes']['NOME-EM-CITACOES-BIBLIOGRAFICAS']);
         $this->entityManager->persist($pesquisador);
         $this->entityManager->flush();
+
+        $usersPesquisadores = new UsersPesquisadores();
+        /**
+         * @var User $user
+         */
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $usersPesquisadores->setPesquisador($pesquisador);
+        $usersPesquisadores->setUser($user);
+        $this->entityManager->persist($usersPesquisadores);
+        $this->entityManager->flush();
+
         return $pesquisador;
     }
 
