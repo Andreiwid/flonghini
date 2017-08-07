@@ -64,7 +64,6 @@ class CurriculumService
         $pesquisador->setNomeEmCitacoes($curriculo['DADOS-GERAIS']['@attributes']['NOME-EM-CITACOES-BIBLIOGRAFICAS']);
         $this->entityManager->persist($pesquisador);
         $this->entityManager->flush();
-
         $usersPesquisadores = new UsersPesquisadores();
         /**
          * @var User $user

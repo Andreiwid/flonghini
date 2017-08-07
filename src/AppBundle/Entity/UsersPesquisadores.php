@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Pesquisador
  *
  * @ORM\Table(name="user_pesquisadores")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UsersPesquisadoresRepository")
  */
 class UsersPesquisadores
 {

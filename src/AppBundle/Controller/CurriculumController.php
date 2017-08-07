@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\CurriculoXML;
 use AppBundle\Form\CurriculoXMLType;
+use AppBundle\Services\PesquisadorService;
 use Symfony\Component\HttpFoundation\File\File;
 use AppBundle\Services\CurriculumService;
 use AppBundle\Services\UserService;
@@ -28,17 +29,25 @@ class CurriculumController extends Controller
     private $userService;
 
     /**
+     * @var PesquisadorService
+     */
+    private $pesquisadorService;
+
+    /**
      * CurriculumController constructor.
      * @param CurriculumService $curriculumService
      * @param UserService $userService
+     * @param PesquisadorService $pesquisadorService
      */
     public function __construct
     (
         CurriculumService $curriculumService,
-        UserService $userService
+        UserService $userService,
+        PesquisadorService $pesquisadorService
     ) {
         $this->curriculumService = $curriculumService;
         $this->userService = $userService;
+        $this->pesquisadorService = $pesquisadorService;
     }
 
     /**
@@ -46,6 +55,7 @@ class CurriculumController extends Controller
      */
     public function indexAction(): Response
     {
+
         return $this->render(
             'default/index.html.twig'
         );
@@ -88,12 +98,16 @@ class CurriculumController extends Controller
      */
     public function listAction()
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $pesquisador = $this->pesquisadorService->getPesquisadorByUserId($user->getId());
 
+        var_dump($pesquisador);
+        die();
         return $this->render(
-            'curriculos/listar.html.twig'
-//            [
-//                'form' => $form->createView(),
-//            ]
+            'curriculos/listar.html.twig',
+            [
+                'pesquisadores' => $pesquisador
+            ]
         );
     }
 
