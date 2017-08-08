@@ -214,35 +214,37 @@ class CurriculumService
                         $trabalhoEmEvento->setNomeDaEditora($detalhamentoDoTrabalho['NOME-DA-EDITORA']);
                         $trabalhoEmEvento->setCidadeDaEditora($detalhamentoDoTrabalho['CIDADE-DA-EDITORA']);
 
-                        $tamanhoDoArray = sizeof($trabalho['AREAS-DO-CONHECIMENTO']);
-                        for ($x = 1; $x <= $tamanhoDoArray; $x++) {
-                            $areasDoConhecimento =
-                                $trabalho['AREAS-DO-CONHECIMENTO']
-                                ['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+                        if (isset($trabalho['AREAS-DO-CONHECIMENTO'])) {
+                            $tamanhoDoArray = sizeof($trabalho['AREAS-DO-CONHECIMENTO']);
+                            for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                                $areasDoConhecimento =
+                                    $trabalho['AREAS-DO-CONHECIMENTO']
+                                    ['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
 
-                            $areasDoConhecimentoTrabalhoEmEvento =
-                                new AreasDoConhecimentoTrabalhoEmEvento();
-                            $areasDoConhecimentoTrabalhoEmEvento
-                                ->setNomeGrandeAreaDoConhecimento(
-                                    $areasDoConhecimento['NOME-GRANDE-AREA-DO-CONHECIMENTO']
-                                );
-                            $areasDoConhecimentoTrabalhoEmEvento
-                                ->setNomeAreaDoConhecimento(
-                                    $areasDoConhecimento['NOME-DA-AREA-DO-CONHECIMENTO']
-                                );
-                            $areasDoConhecimentoTrabalhoEmEvento
-                                ->setNomeDaSubAreaDoConhecimento(
-                                    $areasDoConhecimento['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
-                                );
-                            $areasDoConhecimentoTrabalhoEmEvento
-                                ->setNomeDaEspecialidade(
-                                    $areasDoConhecimento['NOME-DA-ESPECIALIDADE']
-                                );
-                            $areasDoConhecimentoTrabalhoEmEvento
-                                ->setTrabalhoEmEvento($trabalhoEmEvento);
-                            
-                            $this->entityManager->persist($areasDoConhecimentoTrabalhoEmEvento);
-                            $this->entityManager->flush();
+                                $areasDoConhecimentoTrabalhoEmEvento =
+                                    new AreasDoConhecimentoTrabalhoEmEvento();
+                                $areasDoConhecimentoTrabalhoEmEvento
+                                    ->setNomeGrandeAreaDoConhecimento(
+                                        $areasDoConhecimento['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                                    );
+                                $areasDoConhecimentoTrabalhoEmEvento
+                                    ->setNomeAreaDoConhecimento(
+                                        $areasDoConhecimento['NOME-DA-AREA-DO-CONHECIMENTO']
+                                    );
+                                $areasDoConhecimentoTrabalhoEmEvento
+                                    ->setNomeDaSubAreaDoConhecimento(
+                                        $areasDoConhecimento['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                                    );
+                                $areasDoConhecimentoTrabalhoEmEvento
+                                    ->setNomeDaEspecialidade(
+                                        $areasDoConhecimento['NOME-DA-ESPECIALIDADE']
+                                    );
+                                $areasDoConhecimentoTrabalhoEmEvento
+                                    ->setTrabalhoEmEvento($trabalhoEmEvento);
+
+                                $this->entityManager->persist($areasDoConhecimentoTrabalhoEmEvento);
+                                $this->entityManager->flush();
+                            }
                         }
 
                         if (isset($trabalho['SETORES-DE-ATIVIDADE']['@attributes'])) {
@@ -341,10 +343,13 @@ class CurriculumService
                     $artigoPublicado->setPaginaInicial($detalhamentoDoArtigo['PAGINA-INICIAL']);
                     $artigoPublicado->setPaginaFinal($detalhamentoDoArtigo['PAGINA-FINAL']);
                     $artigoPublicado->setLocalDePublicacao($detalhamentoDoArtigo['LOCAL-DE-PUBLICACAO']);
-                    $artigoPublicado
-                        ->setInformacaoAdicional(
-                            $artigo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
-                        );
+
+                    if (isset($artigo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS'])) {
+                        $artigoPublicado
+                            ->setInformacaoAdicional(
+                                $artigo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
+                            );
+                    }
 
                     $artigoPublicado->setPesquisador($pesquisador);
                     
@@ -378,32 +383,34 @@ class CurriculumService
                         $this->entityManager->flush();
                     }
 
-                    $tamanhoDoArray = sizeof($artigo['AREAS-DO-CONHECIMENTO']);
-                    for ($x = 1; $x <= $tamanhoDoArray; $x++) {
-                        $areasDoConhecimentoArtigo =
-                            $artigo['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+                    if (isset($artigo['AREAS-DO-CONHECIMENTO'])) {
+                        $tamanhoDoArray = sizeof($artigo['AREAS-DO-CONHECIMENTO']);
+                        for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                            $areasDoConhecimentoArtigo =
+                                $artigo['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
 
-                        $areaConhecimentoArtigoNovo = new AreasDoConhecimentoArtigo();
-                        $areaConhecimentoArtigoNovo
-                            ->setNomeGrandeAreaDoConhecimento(
-                                $areasDoConhecimentoArtigo['NOME-GRANDE-AREA-DO-CONHECIMENTO']
-                            );
-                        $areaConhecimentoArtigoNovo
-                            ->setNomeDaAreaDoConhecimento(
-                                $areasDoConhecimentoArtigo['NOME-DA-AREA-DO-CONHECIMENTO']
-                            );
-                        $areaConhecimentoArtigoNovo
-                            ->setNomeDaSubAreaDoConhecimento(
-                                $areasDoConhecimentoArtigo['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
-                            );
-                        $areaConhecimentoArtigoNovo
-                            ->setNomeDaEspecialidade(
-                                $areasDoConhecimentoArtigo['NOME-DA-ESPECIALIDADE']
-                            );
-                        $areaConhecimentoArtigoNovo->setTrabalho($artigoPublicado);
-                        
-                        $this->entityManager->persist($areaConhecimentoArtigoNovo);
-                        $this->entityManager->flush();
+                            $areaConhecimentoArtigoNovo = new AreasDoConhecimentoArtigo();
+                            $areaConhecimentoArtigoNovo
+                                ->setNomeGrandeAreaDoConhecimento(
+                                    $areasDoConhecimentoArtigo['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                                );
+                            $areaConhecimentoArtigoNovo
+                                ->setNomeDaAreaDoConhecimento(
+                                    $areasDoConhecimentoArtigo['NOME-DA-AREA-DO-CONHECIMENTO']
+                                );
+                            $areaConhecimentoArtigoNovo
+                                ->setNomeDaSubAreaDoConhecimento(
+                                    $areasDoConhecimentoArtigo['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                                );
+                            $areaConhecimentoArtigoNovo
+                                ->setNomeDaEspecialidade(
+                                    $areasDoConhecimentoArtigo['NOME-DA-ESPECIALIDADE']
+                                );
+                            $areaConhecimentoArtigoNovo->setTrabalho($artigoPublicado);
+
+                            $this->entityManager->persist($areaConhecimentoArtigoNovo);
+                            $this->entityManager->flush();
+                        }
                     }
 
                     $autores = $artigo['AUTORES'];
@@ -503,33 +510,36 @@ class CurriculumService
                     }
                 }
 
-                $tamanhoDoArray = sizeof($capitulo['AREAS-DO-CONHECIMENTO']);
-                for ($x = 1; $x <= $tamanhoDoArray; $x++) {
-                    $areasDoConhecimentoCapitulo =
-                        $capitulo['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+                if (isset($capitulo['AREAS-DO-CONHECIMENTO'])) {
+                    $tamanhoDoArray = sizeof($capitulo['AREAS-DO-CONHECIMENTO']);
+                    for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                        $areasDoConhecimentoCapitulo =
+                            $capitulo['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
 
-                    $areaConhecimentoCapituloNovo = new AreasDoConhecimentoCapituloDeLivro();
-                    $areaConhecimentoCapituloNovo
-                        ->setNomeGrandeAreaDoConhecimento(
-                            $areasDoConhecimentoCapitulo['NOME-GRANDE-AREA-DO-CONHECIMENTO']
-                        );
-                    $areaConhecimentoCapituloNovo
-                        ->setNomeDaAreaDoConhecimento(
-                            $areasDoConhecimentoCapitulo['NOME-DA-AREA-DO-CONHECIMENTO']
-                        );
-                    $areaConhecimentoCapituloNovo
-                        ->setNomeDaSubAreaDoConhecimento(
-                            $areasDoConhecimentoCapitulo['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
-                        );
-                    $areaConhecimentoCapituloNovo
-                        ->setNomeDaEspecialidade(
-                            $areasDoConhecimentoCapitulo['NOME-DA-ESPECIALIDADE']
-                        );
-                    $areaConhecimentoCapituloNovo->setCapitulo($capituloDeLivro);
-                    
-                    $this->entityManager->persist($areaConhecimentoCapituloNovo);
-                    $this->entityManager->flush();
+                        $areaConhecimentoCapituloNovo = new AreasDoConhecimentoCapituloDeLivro();
+                        $areaConhecimentoCapituloNovo
+                            ->setNomeGrandeAreaDoConhecimento(
+                                $areasDoConhecimentoCapitulo['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                            );
+                        $areaConhecimentoCapituloNovo
+                            ->setNomeDaAreaDoConhecimento(
+                                $areasDoConhecimentoCapitulo['NOME-DA-AREA-DO-CONHECIMENTO']
+                            );
+                        $areaConhecimentoCapituloNovo
+                            ->setNomeDaSubAreaDoConhecimento(
+                                $areasDoConhecimentoCapitulo['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                            );
+                        $areaConhecimentoCapituloNovo
+                            ->setNomeDaEspecialidade(
+                                $areasDoConhecimentoCapitulo['NOME-DA-ESPECIALIDADE']
+                            );
+                        $areaConhecimentoCapituloNovo->setCapitulo($capituloDeLivro);
+
+                        $this->entityManager->persist($areaConhecimentoCapituloNovo);
+                        $this->entityManager->flush();
+                    }
                 }
+
 
                 if (isset($capitulo['SETORES-DE-ATIVIDADE']['@attributes'])) {
                     $setorDeAtividadeNovo =
@@ -630,33 +640,36 @@ class CurriculumService
                     }
                 }
 
-                $tamanhoDoArray = sizeof($textoEmJornalOuRevista['AREAS-DO-CONHECIMENTO']);
-                for ($x = 1; $x <= $tamanhoDoArray; $x++) {
-                    $areasDoConhecimentoTexto =
-                        $textoEmJornalOuRevista['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+                if (isset($textoEmJornalOuRevista['AREAS-DO-CONHECIMENTO'])) {
+                    $tamanhoDoArray = sizeof($textoEmJornalOuRevista['AREAS-DO-CONHECIMENTO']);
+                    for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                        $areasDoConhecimentoTexto =
+                            $textoEmJornalOuRevista['AREAS-DO-CONHECIMENTO']['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
 
-                    $areaConhecimentoTextoNovo = new AreasDoConhecimentoTextoEmJornalOuRevista();
-                    $areaConhecimentoTextoNovo
-                        ->setNomeGrandeAreaDoConhecimento(
-                            $areasDoConhecimentoTexto['NOME-GRANDE-AREA-DO-CONHECIMENTO']
-                        );
-                    $areaConhecimentoTextoNovo
-                        ->setNomeDaAreaDoConhecimento(
-                            $areasDoConhecimentoTexto['NOME-DA-AREA-DO-CONHECIMENTO']
-                        );
-                    $areaConhecimentoTextoNovo
-                        ->setNomeDaSubAreaDoConhecimento(
-                            $areasDoConhecimentoTexto['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
-                        );
-                    $areaConhecimentoTextoNovo
-                        ->setNomeDaEspecialidade(
-                            $areasDoConhecimentoTexto['NOME-DA-ESPECIALIDADE']
-                        );
-                    $areaConhecimentoTextoNovo->setTextoEmJornalOuRevista($novoTextoEmJornalOuRevista);
-                    
-                    $this->entityManager->persist($areaConhecimentoTextoNovo);
-                    $this->entityManager->flush();
+                        $areaConhecimentoTextoNovo = new AreasDoConhecimentoTextoEmJornalOuRevista();
+                        $areaConhecimentoTextoNovo
+                            ->setNomeGrandeAreaDoConhecimento(
+                                $areasDoConhecimentoTexto['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                            );
+                        $areaConhecimentoTextoNovo
+                            ->setNomeDaAreaDoConhecimento(
+                                $areasDoConhecimentoTexto['NOME-DA-AREA-DO-CONHECIMENTO']
+                            );
+                        $areaConhecimentoTextoNovo
+                            ->setNomeDaSubAreaDoConhecimento(
+                                $areasDoConhecimentoTexto['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                            );
+                        $areaConhecimentoTextoNovo
+                            ->setNomeDaEspecialidade(
+                                $areasDoConhecimentoTexto['NOME-DA-ESPECIALIDADE']
+                            );
+                        $areaConhecimentoTextoNovo->setTextoEmJornalOuRevista($novoTextoEmJornalOuRevista);
+
+                        $this->entityManager->persist($areaConhecimentoTextoNovo);
+                        $this->entityManager->flush();
+                    }
                 }
+
 
                 $novoTextoEmJornalOuRevista->setInformacaoAdicional(
                     $textoEmJornalOuRevista['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
@@ -766,35 +779,37 @@ class CurriculumService
                     }
                 }
 
-                $tamanhoDoArray = sizeof($artigoAceitoParaPublicacao['AREAS-DO-CONHECIMENTO']);
-                for ($x = 1; $x <= $tamanhoDoArray; $x++) {
-                    $areasDoConhecimentoArtigoAceitoParaPublicacao =
-                        $artigoAceitoParaPublicacao['AREAS-DO-CONHECIMENTO']
-                        ['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
+                if (isset($artigoAceitoParaPublicacao['AREAS-DO-CONHECIMENTO'])) {
+                    $tamanhoDoArray = sizeof($artigoAceitoParaPublicacao['AREAS-DO-CONHECIMENTO']);
+                    for ($x = 1; $x <= $tamanhoDoArray; $x++) {
+                        $areasDoConhecimentoArtigoAceitoParaPublicacao =
+                            $artigoAceitoParaPublicacao['AREAS-DO-CONHECIMENTO']
+                            ['AREA-DO-CONHECIMENTO-'.$x.'']['@attributes'];
 
-                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo =
-                        new AreasDoConhecimentoArtigoAceitoParaPublicacao();
-                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
-                        ->setNomeGrandeAreaDoConhecimento(
-                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-GRANDE-AREA-DO-CONHECIMENTO']
-                        );
-                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
-                        ->setNomeDaAreaDoConhecimento(
-                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-AREA-DO-CONHECIMENTO']
-                        );
-                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
-                        ->setNomeDaSubAreaDoConhecimento(
-                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
-                        );
-                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
-                        ->setNomeDaEspecialidade(
-                            $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-ESPECIALIDADE']
-                        );
-                    $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
-                        ->setArtigoAceitoParaPublicacao($novoArtigoAceitoParaPublicacao);
-                    
-                    $this->entityManager->persist($areasDoConhecimentoArtigoAceitoParaPublicacaoNovo);
-                    $this->entityManager->flush();
+                        $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo =
+                            new AreasDoConhecimentoArtigoAceitoParaPublicacao();
+                        $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                            ->setNomeGrandeAreaDoConhecimento(
+                                $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-GRANDE-AREA-DO-CONHECIMENTO']
+                            );
+                        $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                            ->setNomeDaAreaDoConhecimento(
+                                $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-AREA-DO-CONHECIMENTO']
+                            );
+                        $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                            ->setNomeDaSubAreaDoConhecimento(
+                                $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-SUB-AREA-DO-CONHECIMENTO']
+                            );
+                        $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                            ->setNomeDaEspecialidade(
+                                $areasDoConhecimentoArtigoAceitoParaPublicacao['NOME-DA-ESPECIALIDADE']
+                            );
+                        $areasDoConhecimentoArtigoAceitoParaPublicacaoNovo
+                            ->setArtigoAceitoParaPublicacao($novoArtigoAceitoParaPublicacao);
+
+                        $this->entityManager->persist($areasDoConhecimentoArtigoAceitoParaPublicacaoNovo);
+                        $this->entityManager->flush();
+                    }
                 }
 
                 if (isset($artigoAceitoParaPublicacao['SETORES-DE-ATIVIDADE']['@attributes'])) {

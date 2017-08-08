@@ -59,14 +59,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {{ dump(pesquisadores) }}
-                                        {#{% for pesquisador in pesquisadores %}#}
-                                            {#<tr role="row" class="odd">#}
-                                                {#<td class="expand"><span class="responsiveExpander"></span>{{ pesquisador.nomeCompleto }}</td>#}
-                                                {#<td>{{ pesquisador.nomeEmCitacoes }}</td>#}
-                                                {#<td>Et Rutrum Non Associates</td>#}
-                                            {#</tr>#}
-                                        {#{% endfor %}#}
+                                        {% for pesquisador in pesquisadores %}
+                                            <tr role="row" class="odd">
+                                                <td class="expand"><span class="responsiveExpander"></span>{{ pesquisador.pesquisador.nomeCompleto }}</td>
+                                                <td>{{ pesquisador.pesquisador.nomeEmCitacoes }}</td>
+                                                <td><a class="btn btn-danger" href="{{ path('visualizar_curriculo', {id: pesquisador.pesquisador.id}) }}">Visualizar Currículo</a></td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table><div class="dt-toolbar-footer"><div class="col-sm-6 col-xs-12 hidden-xs"><div class="dataTables_info" id="datatable_tabletools_info" role="status" aria-live="polite">Showing <span class="txt-color-darken">1</span> to <span class="txt-color-darken">10</span> of <span class="text-primary">100</span> entries</div></div><div class="col-sm-6 col-xs-12"><div class="dataTables_paginate paging_simple_numbers" id="datatable_tabletools_paginate"><ul class="pagination pagination-sm"><li class="paginate_button previous disabled" aria-controls="datatable_tabletools" tabindex="0" id="datatable_tabletools_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="datatable_tabletools" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="datatable_tabletools" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="datatable_tabletools" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="datatable_tabletools" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="datatable_tabletools" tabindex="0"><a href="#">5</a></li><li class="paginate_button disabled" aria-controls="datatable_tabletools" tabindex="0" id="datatable_tabletools_ellipsis"><a href="#">…</a></li><li class="paginate_button " aria-controls="datatable_tabletools" tabindex="0"><a href="#">10</a></li><li class="paginate_button next" aria-controls="datatable_tabletools" tabindex="0" id="datatable_tabletools_next"><a href="#">Next</a></li></ul></div></div></div></div>
 

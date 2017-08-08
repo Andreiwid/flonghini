@@ -94,19 +94,47 @@ class CurriculumController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @Route("/curriculo/{id}", requirements={"id" = "\d+"}, name="visualizar_curriculo")
+     * @return Response
+     */
+    public function viewCurriculo(Request $request): Response
+    {
+        $pesquisadorId = (int)$request->get('id');
+        $pesquisador = $this->pesquisadorService->getPesquisadorById($pesquisadorId);
+        $formacaoAcademica = $this->pesquisadorService->getFormacaoAcademicaByPesquisadorId($pesquisadorId);
+        $artigosPublicados = $this->pesquisadorService->getArtigosPublicados($pesquisadorId);
+        $capituloOuLivroPublicado = $this->pesquisadorService->getCapituloOuLivroPublicado($pesquisadorId);
+        $artigoAceitoParaPublicacao = $this->pesquisadorService->getArtigosAceitosParaPublicacao($pesquisadorId);
+        $textosEmJornalOuRevista = $this->pesquisadorService->getTextoEmRevistaOuJornalByPesquisadorId($pesquisadorId);
+        $trabalhosEmEventos = $this->pesquisadorService->getTrabalhosEmEventos($pesquisadorId);
+
+        return $this->render(
+            'curriculos/visualizar.html.twig',
+            [
+                'pesquisador' => $pesquisador,
+                'formacaoAcademica' => $formacaoAcademica,
+                'artigosPublicados' => $artigosPublicados,
+                'artigosAceitosParaPublicacao' => $artigoAceitoParaPublicacao,
+                'textosEmJornalOuRevista' => $textosEmJornalOuRevista,
+                'trabalhosEmEventos' => $trabalhosEmEventos
+            ]
+        );
+    }
+
+    /**
      * @Route("/curriculo/listar", name="listar_curriculos")
      */
     public function listAction()
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $pesquisador = $this->pesquisadorService->getPesquisadorByUserId($user->getId());
+        $userId = $user->getId();
+        $pesquisadores = $this->pesquisadorService->getPesquisadorIdByUserId($userId);
 
-        var_dump($pesquisador);
-        die();
         return $this->render(
             'curriculos/listar.html.twig',
             [
-                'pesquisadores' => $pesquisador
+                'pesquisadores' => $pesquisadores
             ]
         );
     }
@@ -114,8 +142,8 @@ class CurriculumController extends Controller
     public function saveAction(): void
     {
         $finder = new Finder();
-        $finder->files()->in('/home/francisco/projetos/proj/xml');
-//        $finder->files()->in('/Users/Chico/Sites/proj/xml');
+//        $finder->files()->in('/home/francisco/projetos/proj/xml');
+        $finder->files()->in('/Users/Chico/Sites/proj/xml');
 
         foreach ($finder as $file) {
             $cv = new \SimpleXMLElement($file->getContents());
@@ -131,5 +159,7 @@ class CurriculumController extends Controller
         $this->curriculumService->salvarTextoEmJornalOuRevista($curriculo, $pesquisador);
         $this->curriculumService->salvarArtigoAceitoParaPublicacao($curriculo, $pesquisador);
     }
+
+
 
 }

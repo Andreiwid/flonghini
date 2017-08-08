@@ -22,13 +22,13 @@ class UsersPesquisadores
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", fetch="EAGER")
      * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pesquisador")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pesquisador", fetch="EAGER")
      * @ORM\JoinColumn(name="pesquisador", referencedColumnName="id")
      */
     private $pesquisador;
