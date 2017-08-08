@@ -85,10 +85,42 @@
                                                 </ul>
                                                 <div class="tab-content padding-10">
                                                     <div class="tab-pane active" id="iss1">
-                                                        <p><strong>Nome Completo:</strong> {{ pesquisador.nomeCompleto }}</p>
-                                                        <p><strong>Nacionalidade:</strong> {{ pesquisador.nacionalidade }}</p>
-                                                        <p><strong>Nome em citações:</strong> {{ pesquisador.nomeEmCitacoes }}</p>
+                                                        <div class="well well-sm well-light">
+                                                            <p><strong>Nome Completo:</strong> {{ pesquisador.nomeCompleto }}</p>
+                                                            <p><strong>Nacionalidade:</strong> {{ pesquisador.nacionalidade }}</p>
+                                                            <p><strong>Nome em citações:</strong> {{ pesquisador.nomeEmCitacoes }}</p>
+                                                            <h3>Formação Acadêmica
+                                                            <br>
+                                                            <small>Clique para visualizar os detalhes</small></h3>
+                                                            <div id="accordion6" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                                                {% set k=0 %}
+                                                                {% for formacao in formacaoAcademica%}
+                                                                    <div class="">
+                                                                        <h4 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-{{ k }}" aria-controls="ui-accordion-accordion-panel-{{ k }}" aria-selected="false" tabindex="-1">
+                                                                            <span class="ui-accordion-header-icon ui-icon fa fa-plus"></span>{{ formacao.curso }}</h4>
+                                                                        <div class="padding-10 ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-{{ k }}" aria-labelledby="ui-accordion-accordion-header-{{ k }}" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                                                            <p><strong>Grau de Formação:</strong>
+                                                                                {% if formacao.grauDeFormacao == 1 %}
+                                                                                    Bacharelado / Licenciatura
+                                                                                {% elseif formacao.grauDeFormacao == 3 %}
+                                                                                    Mestrado
+                                                                                {% elseif formacao.grauDeFormacao == 4 %}
+                                                                                    Doutorado
+                                                                                {% endif %}
+                                                                            </p>
+                                                                            <p><strong>Instituição:</strong> {{ formacao.instituicao }}</p>
+                                                                            <p><strong>Curso:</strong> {{ formacao.curso }}</p>
+                                                                            <p><strong>Ano Início:</strong> {{ formacao.anoInicio }}</p>
+                                                                            <p><strong>Ano Fim:</strong> {{ formacao.anoFim }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% set k=k+1 %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+
                                                     </div>
+
 
                                                     <div class="tab-pane fade" id="iss2">
                                                         <div class="well well-sm well-light">
@@ -348,6 +380,14 @@
                     header : "h4",
                 })
                 $("#accordion5").accordion({
+                    autoHeight : false,
+                    heightStyle : "content",
+                    collapsible : true,
+                    animate : 300,
+                    icons: accordionIcons,
+                    header : "h4",
+                })
+                $("#accordion6").accordion({
                     autoHeight : false,
                     heightStyle : "content",
                     collapsible : true,
