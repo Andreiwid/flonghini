@@ -60,41 +60,7 @@
                                     <!-- widget content -->
                                     <div class="widget-body">
 
-                                        <div class="tab-content">
-                                            <div class="tab-pane" id="hr1">
 
-                                                <div class="tabbable tabs-below">
-                                                    <div class="tab-content padding-10">
-                                                        <div class="tab-pane active" id="AA">
-                                                            <p>
-                                                                The broccoli says 'I look like a small tree', the mushroom says 'I look like an umbrella', the walnut says 'I look like a brain', and the banana says 'Can we please change the subject?'
-                                                            </p>
-                                                        </div>
-                                                        <div class="tab-pane" id="BB">
-                                                            <p>
-                                                                Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
-                                                            </p>
-                                                        </div>
-                                                        <div class="tab-pane" id="CC">
-                                                            <p>
-                                                                Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="nav nav-tabs">
-                                                        <li class="active">
-                                                            <a data-toggle="tab" href="#AA" aria-expanded="false">Tab 1</a>
-                                                        </li>
-                                                        <li>
-                                                            <a data-toggle="tab" href="#BB" aria-expanded="false">Tab 2</a>
-                                                        </li>
-                                                        <li>
-                                                            <a data-toggle="tab" href="#CC" aria-expanded="false">Tab 3</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
                                             <div class="tab-pane active" id="hr2">
 
                                                 <ul class="nav nav-tabs">
@@ -107,22 +73,210 @@
                                                     <li>
                                                         <a href="#iss3" data-toggle="tab" aria-expanded="true">Artigos Aceitos para Publicação</a>
                                                     </li>
+                                                    <li>
+                                                        <a href="#iss4" data-toggle="tab" aria-expanded="true">Capítulos ou Livros Publicados</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#iss5" data-toggle="tab" aria-expanded="true">Trabalhos em Eventos</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#iss6" data-toggle="tab" aria-expanded="true">Texto em Jornal ou Revista</a>
+                                                    </li>
                                                 </ul>
                                                 <div class="tab-content padding-10">
                                                     <div class="tab-pane active" id="iss1">
-                                                        <p>
-                                                            Three monkeys escaped from the zoo, one was caught watching TV, the other playing hockey, and the third one was caught reading this quote!
-                                                        </p>
+                                                        <p><strong>Nome Completo:</strong> {{ pesquisador.nomeCompleto }}</p>
+                                                        <p><strong>Nacionalidade:</strong> {{ pesquisador.nacionalidade }}</p>
+                                                        <p><strong>Nome em citações:</strong> {{ pesquisador.nomeEmCitacoes }}</p>
                                                     </div>
+
                                                     <div class="tab-pane fade" id="iss2">
-                                                        <p>
-                                                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
-                                                        </p>
+                                                        <div class="well well-sm well-light">
+                                                            <h3>Lista de artigos
+                                                            <br>
+                                                            <small>Clique para visualizar os detalhes</small></h3>
+                                                            <div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                                                {% set k=0 %}
+                                                                {% for artigoPublicado in artigosPublicados%}
+                                                                <div class="">
+                                                                    <h4 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-{{ k }}" aria-controls="ui-accordion-accordion-panel-{{ k }}" aria-selected="false" tabindex="-1">
+                                                                    <span class="ui-accordion-header-icon ui-icon fa fa-plus"></span>{{ artigoPublicado.tituloDoArtigo }}</h4>
+                                                                    <div class="padding-10 ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-{{ k }}" aria-labelledby="ui-accordion-accordion-header-{{ k }}" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                                                        <p><strong>Título do Artigo:</strong> {{ artigoPublicado.tituloDoArtigo }}</p>
+                                                                        <p><strong>Natureza:</strong> {{ artigoPublicado.natureza }}</p>
+                                                                        <p><strong>Ano do Artigo:</strong> {{ artigoPublicado.anoDoArtigo }}</p>
+                                                                        <p><strong>Idioma:</strong> {{ artigoPublicado.idioma }}</p>
+                                                                        <p><strong>Pais de publicação:</strong> {{ artigoPublicado.paisdePublicacao }}</p>
+                                                                        <p><strong>Meio de divulgação:</strong> {{ artigoPublicado.meioDeDivulgacao }}</p>
+                                                                        <p><strong>DOI:</strong> {{ artigoPublicado.doi }}</p>
+                                                                        <p><strong>Titulo do Periódico ou Revista:</strong> {{ artigoPublicado.tituloDoPeriodicoOuRevista }}</p>
+                                                                        <p><strong>Titulo do Periódico ou Revista em Inglês:</strong> {{ artigoPublicado.tituloArtigoEmIngles }}</p>
+                                                                        <p><strong>ISSN:</strong> {{ artigoPublicado.issn }}</p>
+                                                                        <p><strong>Volume:</strong> {{ artigoPublicado.volume }}</p>
+                                                                        <p><strong>Fascículo:</strong> {{ artigoPublicado.fasciculo }}</p>
+                                                                        <p><strong>Série:</strong> {{ artigoPublicado.serie }}</p>
+                                                                        <p><strong>Página Inicial:</strong> {{ artigoPublicado.paginaInicial }}</p>
+                                                                        <p><strong>Página Final:</strong> {{ artigoPublicado.paginaFinal }}</p>
+                                                                        <p><strong>Local de Publicação:</strong> {{ artigoPublicado.localDePublicacao }}</p>
+                                                                        <p><strong>Informação Adicional:</strong> {{ artigoPublicado.informacaoAdicional }}</p>
+                                                                    </div>
+                                                                </div>
+                                                                {% set k=k+1 %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
                                                     </div>
+
                                                     <div class="tab-pane fade" id="iss3">
-                                                        <p>
-                                                            Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table.
-                                                        </p>
+                                                        <div class="well well-sm well-light">
+                                                            <h3>Lista de artigos aceitos para publicação
+                                                                <br>
+                                                                <small>Clique para visualizar os detalhes</small></h3>
+                                                            <div id="accordion2" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                                                {% set k=0 %}
+                                                                {% for artigoAceitoParaPublicacao in artigosAceitosParaPublicacao %}
+                                                                    <div class="">
+                                                                        <h4 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-{{ k }}" aria-controls="ui-accordion-accordion-panel-{{ k }}" aria-selected="false" tabindex="-1">
+                                                                            <span class="ui-accordion-header-icon ui-icon fa fa-plus"></span>{{ artigoAceitoParaPublicacao.tituloDoArtigo }}</h4>
+                                                                        <div class="padding-10 ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-{{ k }}" aria-labelledby="ui-accordion-accordion-header-{{ k }}" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                                                            <p><strong>Título do Artigo:</strong> {{ artigoAceitoParaPublicacao.tituloDoArtigo }}</p>
+                                                                            <p><strong>Natureza:</strong> {{ artigoAceitoParaPublicacao.natureza }}</p>
+                                                                            <p><strong>Ano do Artigo:</strong> {{ artigoAceitoParaPublicacao.anoDoArtigo }}</p>
+                                                                            <p><strong>Idioma:</strong> {{ artigoAceitoParaPublicacao.idioma }}</p>
+                                                                            <p><strong>Pais de publicação:</strong> {{ artigoAceitoParaPublicacao.paisdePublicacao }}</p>
+                                                                            <p><strong>Meio de divulgação:</strong> {{ artigoAceitoParaPublicacao.meioDeDivulgacao }}</p>
+                                                                            <p><strong>DOI:</strong> {{ artigoAceitoParaPublicacao.doi }}</p>
+                                                                            <p><strong>Titulo do Periódico ou Revista:</strong> {{ artigoAceitoParaPublicacao.tituloDoPeriodicoOuRevista }}</p>
+                                                                            <p><strong>Titulo do Periódico ou Revista em Inglês:</strong> {{ artigoAceitoParaPublicacao.tituloDoArtigoEmIngles }}</p>
+                                                                            <p><strong>ISSN:</strong> {{ artigoAceitoParaPublicacao.issn }}</p>
+                                                                            <p><strong>Volume:</strong> {{ artigoAceitoParaPublicacao.volume }}</p>
+                                                                            <p><strong>Fascículo:</strong> {{ artigoAceitoParaPublicacao.fasciculo }}</p>
+                                                                            <p><strong>Série:</strong> {{ artigoAceitoParaPublicacao.serie }}</p>
+                                                                            <p><strong>Página Inicial:</strong> {{ artigoAceitoParaPublicacao.paginaInicial }}</p>
+                                                                            <p><strong>Página Final:</strong> {{ artigoAceitoParaPublicacao.paginaFinal }}</p>
+                                                                            <p><strong>Local de Publicação:</strong> {{ artigoAceitoParaPublicacao.localDePublicacao }}</p>
+                                                                            <p><strong>Informação Adicional:</strong> {{ artigoAceitoParaPublicacao.informacaoAdicional }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% set k=k+1 %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane fade" id="iss4">
+                                                        <div class="well well-sm well-light">
+                                                            <h3>Lista de capítulos ou livros publicados
+                                                                <br>
+                                                                <small>Clique para visualizar os detalhes</small></h3>
+                                                            <div id="accordion3" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                                                {% set k=0 %}
+                                                                {% for capituloOuLivroPublicado in capitulosOuLivrosPublicados %}
+                                                                    <div class="">
+                                                                        <h4 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-{{ k }}" aria-controls="ui-accordion-accordion-panel-{{ k }}" aria-selected="false" tabindex="-1">
+                                                                            <span class="ui-accordion-header-icon ui-icon fa fa-plus"></span>{{ capituloOuLivroPublicado.tituloDoCapituloDoLivro }}</h4>
+                                                                        <div class="padding-10 ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-{{ k }}" aria-labelledby="ui-accordion-accordion-header-{{ k }}" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                                                            <p><strong>Título do Artigo:</strong> {{ capituloOuLivroPublicado.tituloDoCapituloDoLivro }}</p>
+                                                                            <p><strong>Tipo:</strong> {{ capituloOuLivroPublicado.tipo }}</p>
+                                                                            <p><strong>Ano:</strong> {{ capituloOuLivroPublicado.ano }}</p>
+                                                                            <p><strong>Idioma:</strong> {{ capituloOuLivroPublicado.idioma }}</p>
+                                                                            <p><strong>Pais de publicação:</strong> {{ capituloOuLivroPublicado.paisdePublicacao }}</p>
+                                                                            <p><strong>Meio de divulgação:</strong> {{ capituloOuLivroPublicado.meioDeDivulgacao }}</p>
+                                                                            <p><strong>DOI:</strong> {{ capituloOuLivroPublicado.doi }}</p>
+                                                                            <p><strong>Titulo do Livro:</strong> {{ capituloOuLivroPublicado.tituloDoLivro }}</p>
+                                                                            <p><strong>Titulo do Capítulo ou Livro em Inglês:</strong> {{ capituloOuLivroPublicado.tituloDoCapituloDoLivroIngles }}</p>
+                                                                            <p><strong>ISBN:</strong> {{ capituloOuLivroPublicado.isbn }}</p>
+                                                                            <p><strong>Número de volumes:</strong> {{ capituloOuLivroPublicado.numeroDeVolumes }}</p>
+                                                                            <p><strong>Página Inicial:</strong> {{ capituloOuLivroPublicado.paginaInicial }}</p>
+                                                                            <p><strong>Página Final:</strong> {{ capituloOuLivroPublicado.paginaFinal }}</p>
+                                                                            <p><strong>Organizadores:</strong> {{ capituloOuLivroPublicado.organizadores }}</p>
+                                                                            <p><strong>Número da Edição de revisão:</strong> {{ capituloOuLivroPublicado.numeroDaEdicaoRevisao }}</p>
+                                                                            <p><strong>Número da Série:</strong> {{ capituloOuLivroPublicado.numeroDaSerie }}</p>
+                                                                            <p><strong>Cidade da Editora:</strong> {{ capituloOuLivroPublicado.cidadeDaEditora }}</p>
+                                                                            <p><strong>Nome da Editora:</strong> {{ capituloOuLivroPublicado.nomeDaEditora }}</p>
+                                                                            <p><strong>Informação Adicional:</strong> {{ capituloOuLivroPublicado.informacaoAdicional }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% set k=k+1 %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane fade" id="iss5">
+                                                        <div class="well well-sm well-light">
+                                                            <h3>Lista de trabalhos publicados em eventos
+                                                                <br>
+                                                                <small>Clique para visualizar os detalhes</small></h3>
+                                                            <div id="accordion4" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                                                {% set k=0 %}
+                                                                {% for trabalhoEmEvento in trabalhosEmEventos %}
+                                                                    <div class="">
+                                                                        <h4 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-{{ k }}" aria-controls="ui-accordion-accordion-panel-{{ k }}" aria-selected="false" tabindex="-1">
+                                                                            <span class="ui-accordion-header-icon ui-icon fa fa-plus"></span>{{ trabalhoEmEvento.tituloDoTrabalho }}</h4>
+                                                                        <div class="padding-10 ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-{{ k }}" aria-labelledby="ui-accordion-accordion-header-{{ k }}" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                                                            <p><strong>Título do Artigo:</strong> {{ trabalhoEmEvento.tituloDoTrabalho }}</p>
+                                                                            <p><strong>Natureza:</strong> {{ trabalhoEmEvento.natureza }}</p>
+                                                                            <p><strong>Ano do Trabalho:</strong> {{ trabalhoEmEvento.anoDoTrabalho }}</p>
+                                                                            <p><strong>Idioma:</strong> {{ trabalhoEmEvento.idioma }}</p>
+                                                                            <p><strong>Pais do evento:</strong> {{ trabalhoEmEvento.paisDoEvento }}</p>
+                                                                            <p><strong>Meio de divulgação:</strong> {{ trabalhoEmEvento.meioDeDivulgacao }}</p>
+                                                                            <p><strong>DOI:</strong> {{ trabalhoEmEvento.doi }}</p>
+                                                                            <p><strong>Titulo do Trabalho em Inglês:</strong> {{ trabalhoEmEvento.tituloDoTrabalhoIngles }}</p>
+                                                                            <p><strong>Classificação do Evento:</strong> {{ trabalhoEmEvento.classificacaoDoEvento }}</p>
+                                                                            <p><strong>Nome do Evento:</strong> {{ trabalhoEmEvento.nomeDoEvento }}</p>
+                                                                            <p><strong>Cidade do Evento:</strong> {{ trabalhoEmEvento.cidadeDoEvento }}</p>
+                                                                            <p><strong>Ano de Realização:</strong> {{ trabalhoEmEvento.anoDeRealizacao }}</p>
+                                                                            <p><strong>Título dos anais ou proceedings:</strong> {{ trabalhoEmEvento.tituloDosAnaisOuProceedings }}</p>
+                                                                            <p><strong>Volume:</strong> {{ trabalhoEmEvento.volume }}</p>
+                                                                            <p><strong>Fascículo:</strong> {{ trabalhoEmEvento.fasciculo }}</p>
+                                                                            <p><strong>Série:</strong> {{ trabalhoEmEvento.serie }}</p>
+                                                                            <p><strong>Página Inicial:</strong> {{ trabalhoEmEvento.paginaInicial }}</p>
+                                                                            <p><strong>Página Final:</strong> {{ trabalhoEmEvento.paginaFinal }}</p>
+                                                                            <p><strong>ISBN:</strong> {{ trabalhoEmEvento.isbn }}</p>
+                                                                            <p><strong>Cidade da Editora:</strong> {{ trabalhoEmEvento.cidadeDaEditora }}</p>
+                                                                            <p><strong>Nome da Editora:</strong> {{ trabalhoEmEvento.nomeDaEditora }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% set k=k+1 %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="iss6">
+                                                        <div class="well well-sm well-light">
+                                                            <h3>Lista de texto publicados em jornais ou revistas
+                                                                <br>
+                                                                <small>Clique para visualizar os detalhes</small></h3>
+                                                            <div id="accordion5" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                                                {% set k=0 %}
+                                                                {% for textoEmJornalOuRevista in textosEmJornalOuRevista%}
+                                                                    <div class="">
+                                                                        <h4 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-{{ k }}" aria-controls="ui-accordion-accordion-panel-{{ k }}" aria-selected="false" tabindex="-1">
+                                                                            <span class="ui-accordion-header-icon ui-icon fa fa-plus"></span>{{ textoEmJornalOuRevista.tituloDoTexto }}</h4>
+                                                                        <div class="padding-10 ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-{{ k }}" aria-labelledby="ui-accordion-accordion-header-{{ k }}" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+                                                                            <p><strong>Título do Artigo:</strong> {{ textoEmJornalOuRevista.tituloDoTexto }}</p>
+                                                                            <p><strong>Natureza:</strong> {{ textoEmJornalOuRevista.natureza }}</p>
+                                                                            <p><strong>Ano do Texto:</strong> {{ textoEmJornalOuRevista.anoDoTexto }}</p>
+                                                                            <p><strong>Idioma:</strong> {{ textoEmJornalOuRevista.idioma }}</p>
+                                                                            <p><strong>Pais de publicação:</strong> {{ textoEmJornalOuRevista.paisdePublicacao }}</p>
+                                                                            <p><strong>Meio de divulgação:</strong> {{ textoEmJornalOuRevista.meioDeDivulgacao }}</p>
+                                                                            <p><strong>DOI:</strong> {{ textoEmJornalOuRevista.doi }}</p>
+                                                                            <p><strong>Titulo do Periódico ou Revista em Inglês:</strong> {{ textoEmJornalOuRevista.tituloDoJornalOuRevista }}</p>
+                                                                            <p><strong>Titulo do Periódico ou Revista em Inglês:</strong> {{ textoEmJornalOuRevista.tituloDoTextoEmIngles }}</p>
+                                                                            <p><strong>ISSN:</strong> {{ textoEmJornalOuRevista.issn }}</p>
+                                                                            <p><strong>Data de publicação:</strong> {{ textoEmJornalOuRevista.dataDePublicacao}}</p>
+                                                                            <p><strong>Volume:</strong> {{ textoEmJornalOuRevista.volume }}</p>
+                                                                            <p><strong>Página Inicial:</strong> {{ textoEmJornalOuRevista.paginaInicial }}</p>
+                                                                            <p><strong>Página Final:</strong> {{ textoEmJornalOuRevista.paginaFinal }}</p>
+                                                                            <p><strong>Local de Publicação:</strong> {{ textoEmJornalOuRevista.localDePublicacao }}</p>
+                                                                            <p><strong>Informação Adicional:</strong> {{ textoEmJornalOuRevista.informacaoAdicional }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    {% set k=k+1 %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -149,4 +303,59 @@
         <!-- end widget grid -->
     </div>
     <!-- END MAIN CONTENT -->
+    {% block body_scripts %}
+        {{ parent() }}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                /*
+                * ACCORDION
+                */
+                //jquery accordion
+                var accordionIcons = {
+                    header: "fa fa-plus",    // custom icon class
+                    activeHeader: "fa fa-minus" // custom icon class
+                };
+                $("#accordion").accordion({
+                    autoHeight : false,
+                    heightStyle : "content",
+                    collapsible : true,
+                    animate : 300,
+                    icons: accordionIcons,
+                    header : "h4",
+                })
+                $("#accordion2").accordion({
+                    autoHeight : false,
+                    heightStyle : "content",
+                    collapsible : true,
+                    animate : 300,
+                    icons: accordionIcons,
+                    header : "h4",
+                })
+                $("#accordion3").accordion({
+                    autoHeight : false,
+                    heightStyle : "content",
+                    collapsible : true,
+                    animate : 300,
+                    icons: accordionIcons,
+                    header : "h4",
+                })
+                $("#accordion4").accordion({
+                    autoHeight : false,
+                    heightStyle : "content",
+                    collapsible : true,
+                    animate : 300,
+                    icons: accordionIcons,
+                    header : "h4",
+                })
+                $("#accordion5").accordion({
+                    autoHeight : false,
+                    heightStyle : "content",
+                    collapsible : true,
+                    animate : 300,
+                    icons: accordionIcons,
+                    header : "h4",
+                })
+            })
+        </script>
+    {% endblock %}
 {% endblock %}

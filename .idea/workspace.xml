@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3f6541d-6a7b-4cf7-a4ec-129369e61471" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xml/80087cf25bc5705d9e734ac1b6582634.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml.dist" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/CurriculoXML.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/CurriculoXML.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/UsersPesquisadores.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/UsersPesquisadores.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/CurriculoXMLType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/CurriculoXMLType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/UsersPesquisadoresRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/UsersPesquisadoresRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/teste.php" afterPath="$PROJECT_DIR$/web/teste.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,107 +19,58 @@
       <file leaf-file-name="CurriculumController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="113" column="13" lean-forward="true" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-              <folding>
-                <element signature="e#3648#3681#0#PHP" expanded="true" />
-                <element signature="e#4461#4490#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CurriculumService.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="44" column="37" lean-forward="true" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
-              <folding>
-                <element signature="e#38#85#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/UserService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="21" column="5" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="484">
+              <caret line="118" column="40" lean-forward="false" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PesquisadorService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-              <folding>
-                <element signature="e#39#78#0#PHP" expanded="true" />
-                <element signature="e#646#669#1#PHP" expanded="true" />
-                <element signature="e#906#935#1#PHP" expanded="true" />
-                <element signature="e#1213#1251#1#PHP" expanded="true" />
-                <element signature="e#1525#1561#1#PHP" expanded="true" />
-                <element signature="e#1810#1840#1#PHP" expanded="true" />
-                <element signature="e#2091#2120#1#PHP" expanded="true" />
-                <element signature="e#2407#2450#1#PHP" expanded="true" />
-                <element signature="e#2718#2748#1#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="visualizar.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="visualizar.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1036">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="57" selection-start-column="63" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="-2160">
+              <caret line="97" column="102" lean-forward="true" selection-start-line="97" selection-start-column="102" selection-end-line="97" selection-end-column="102" />
               <folding>
                 <element signature="e#12#28#0#Twig" expanded="true" />
+                <element signature="e#6683#6705#0#HTML" expanded="true" />
+                <element signature="e#11448#11470#0#HTML" expanded="true" />
+                <element signature="e#16485#16507#0#HTML" expanded="true" />
+                <element signature="e#21802#21824#0#HTML" expanded="true" />
+                <element signature="e#27267#27289#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cadastrar.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/cadastrar.html.twig">
+      <file leaf-file-name="CapituloDeLivroPublicado.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CapituloDeLivroPublicado.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-554">
-              <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state relative-caret-position="450">
+              <caret line="50" column="36" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CurriculoXML.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CurriculoXML.php">
+      <file leaf-file-name="jqui.html" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/template/DEVELOPER/HTML_Full_Version/jqui.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArtigosPublicados.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-947">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listar.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="87" column="29" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="87" selection-end-column="29" />
+            <state relative-caret-position="682">
+              <caret line="1181" column="14" lean-forward="false" selection-start-line="1181" selection-start-column="14" selection-end-line="1181" selection-end-column="14" />
               <folding>
-                <element signature="e#8518#8538#0#Twig" expanded="true" />
+                <marker date="1456703952000" expanded="true" signature="50861:50867" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="51033:51039" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="51685:51691" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="52148:52166" ph="..." />
+                <marker date="1456703952000" expanded="true" signature="52218:52236" ph="..." />
+                <marker date="1456703952000" expanded="true" signature="52371:52377" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="52377:52383" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="52383:52389" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="52389:52395" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="52395:52401" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="52741:52747" ph=" " />
+                <marker date="1456703952000" expanded="true" signature="52909:52915" ph=" " />
               </folding>
             </state>
           </provider>
@@ -142,10 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>class= &quot;demo&quot;</find>
-      <find>site tr</find>
-      <find>Last account activity</find>
-      <find>English</find>
       <find>project</find>
       <find>chico</find>
       <find>doe</find>
@@ -172,6 +113,10 @@
       <find>getToke</find>
       <find>$tamanhoDoArray = sizeof</find>
       <find>$artigo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']</find>
+      <find>jarviswidget</find>
+      <find>accordio</find>
+      <find>accord</find>
+      <find>with font</find>
     </findStrings>
     <replaceStrings>
       <replace>$this-&gt;entityManager-&gt;</replace>
@@ -221,7 +166,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/cadastrar.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/CurriculoXMLType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/listar.html" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Pesquisador.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/UsersPesquisadoresRepository.php" />
@@ -231,9 +175,10 @@
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html" />
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" />
       </list>
     </option>
   </component>
@@ -247,7 +192,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 7.1.4.1" />
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -269,8 +214,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -320,6 +263,13 @@
               <item name="proj" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="proj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="proj" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Services" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -331,6 +281,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,8 +291,8 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laudos24horas" />
-    <property name="SearchEverywhereHistoryKey" value="curric&#9;FILE&#9;file:///Users/Chico/Sites/proj/src/AppBundle/Services/CurriculumService.php&#10;cu&#9;FILE&#9;file:///Users/Chico/Sites/proj/src/AppBundle/Services/CurriculumService.php&#10;User&#9;FILE&#9;file:///home/francisco/projetos/proj/src/AppBundle/Entity/User.php&#10;config.yml&#9;FILE&#9;file:///Users/Chico/Sites/proj/app/config/config.yml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SearchEverywhereHistoryKey" value="base&#9;FILE&#9;file:///home/francisco/projetos/proj/app/Resources/views/base.html.twig&#10;curric&#9;FILE&#9;file:///Users/Chico/Sites/proj/src/AppBundle/Services/CurriculumService.php&#10;cu&#9;FILE&#9;file:///Users/Chico/Sites/proj/src/AppBundle/Services/CurriculumService.php&#10;User&#9;FILE&#9;file:///home/francisco/projetos/proj/src/AppBundle/Entity/User.php&#10;config.yml&#9;FILE&#9;file:///Users/Chico/Sites/proj/app/config/config.yml" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
@@ -463,26 +415,27 @@
       <workItem from="1502120554359" duration="8166000" />
       <workItem from="1502130411952" duration="5105000" />
       <workItem from="1502141436479" duration="8332000" />
+      <workItem from="1502188155846" duration="6296000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125728000" />
+    <option name="totallyTimeSpent" value="132024000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="43" y="-4" width="1877" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22708334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="467" y="15" width="346" height="850" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22938286" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="467" y="15" width="346" height="850" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24745497" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -505,9 +458,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig" />
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php" />
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -632,18 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="298" column="79" lean-forward="false" selection-start-line="298" selection-start-column="79" selection-end-line="299" selection-end-column="33" />
-          <folding>
-            <element signature="e#16680#16689#0#Twig" expanded="true" />
-            <element signature="e#16898#16915#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -651,7 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="125" column="10" lean-forward="false" selection-start-line="125" selection-start-column="10" selection-end-line="125" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +597,7 @@
         <state relative-caret-position="270">
           <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
           <folding>
-            <element signature="e#36#68#0#PHP" expanded="true" />
+            <element signature="e#36#68#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -669,27 +606,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
-          <folding>
-            <marker date="1502140998000" expanded="true" signature="167:298" ph=" Pesquisador ..." />
-            <marker date="1502140998000" expanded="true" signature="328:462" ph=" @var int ..." />
-            <marker date="1502140998000" expanded="true" signature="490:590" ph=" @var string ..." />
-            <marker date="1502140998000" expanded="true" signature="628:731" ph=" @var string ..." />
-            <marker date="1502140998000" expanded="true" signature="771:871" ph=" @var string ..." />
-            <marker date="1502140998000" expanded="true" signature="910:1013" ph=" @ORM\OneToMany(targetEntity=&quot;AppBundle\Entity\FormacaoAcademica&quot;, mappedBy=&quot;pesquisador&quot;) ..." />
-            <marker date="1502140998000" expanded="true" signature="1057:1103" ph=" Get id ..." />
-            <marker date="1502140998000" expanded="true" signature="1133:1171" ph="{...}" />
-            <marker date="1502140998000" expanded="true" signature="1180:1286" ph=" Set nomeCompleto ..." />
-            <marker date="1502140998000" expanded="true" signature="1339:1419" ph="{...}" />
-            <marker date="1502140998000" expanded="true" signature="1428:1487" ph=" Get nomeCompleto ..." />
-            <marker date="1502140998000" expanded="true" signature="1527:1575" ph="{...}" />
-            <marker date="1502140998000" expanded="true" signature="1584:1694" ph=" Set nomeEmCitacoes ..." />
-            <marker date="1502140998000" expanded="true" signature="1751:1835" ph="{...}" />
-            <marker date="1502140998000" expanded="true" signature="1844:1905" ph=" Get nomeEmCitacoes ..." />
-            <marker date="1502140998000" expanded="true" signature="1947:1997" ph="{...}" />
-            <marker date="1502140998000" expanded="true" signature="2006:2114" ph=" Set nacionalidade ..." />
-            <marker date="1502140998000" expanded="true" signature="2169:2251" ph="{...}" />
-            <marker date="1502140998000" expanded="true" signature="2260:2320" ph=" Get nacionalidade ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -697,7 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="59" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -714,7 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,33 +645,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="87" column="29" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="87" selection-end-column="29" />
-          <folding>
-            <element signature="e#8518#8538#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1036">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="57" selection-start-column="63" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#28#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/cadastrar.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-554">
+        <state relative-caret-position="126">
           <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding />
         </state>
@@ -772,7 +666,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-947">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -788,39 +682,100 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="42" column="5" lean-forward="true" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state relative-caret-position="648">
+          <caret line="103" column="1" lean-forward="true" selection-start-line="103" selection-start-column="1" selection-end-line="103" selection-end-column="1" />
           <folding>
-            <element signature="e#39#78#0#PHP" expanded="true" />
-            <element signature="e#646#669#1#PHP" expanded="true" />
-            <element signature="e#906#935#1#PHP" expanded="true" />
-            <element signature="e#1213#1251#1#PHP" expanded="true" />
-            <element signature="e#1525#1561#1#PHP" expanded="true" />
-            <element signature="e#1810#1840#1#PHP" expanded="true" />
-            <element signature="e#2091#2120#1#PHP" expanded="true" />
-            <element signature="e#2407#2450#1#PHP" expanded="true" />
-            <element signature="e#2718#2748#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="113" column="13" lean-forward="true" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-          <folding>
-            <element signature="e#3648#3681#0#PHP" expanded="true" />
-            <element signature="e#4461#4490#0#PHP" expanded="true" />
+            <marker date="1502188051534" expanded="false" signature="43:60" ph="..." />
+            <marker date="1502188051534" expanded="true" signature="2817:2819" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="44" column="37" lean-forward="true" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+        <state relative-caret-position="314">
+          <caret line="47" column="7" lean-forward="false" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
           <folding>
-            <element signature="e#38#85#0#PHP" expanded="true" />
+            <element signature="e#38#85#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="941">
+          <caret line="86" column="10" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="86" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2972">
+          <caret line="622" column="22" lean-forward="false" selection-start-line="622" selection-start-column="22" selection-end-line="622" selection-end-column="22" />
+          <folding>
+            <element signature="e#16680#16689#0#Twig" expanded="true" />
+            <element signature="e#16898#16915#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/template/DEVELOPER/HTML_Full_Version/jqui.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="1181" column="14" lean-forward="false" selection-start-line="1181" selection-start-column="14" selection-end-line="1181" selection-end-column="14" />
+          <folding>
+            <marker date="1456703952000" expanded="true" signature="50861:50867" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="51033:51039" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="51685:51691" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="52148:52166" ph="..." />
+            <marker date="1456703952000" expanded="true" signature="52218:52236" ph="..." />
+            <marker date="1456703952000" expanded="true" signature="52371:52377" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="52377:52383" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="52383:52389" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="52389:52395" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="52395:52401" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="52741:52747" ph=" " />
+            <marker date="1456703952000" expanded="true" signature="52909:52915" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ArtigoAceitoParaPublicacao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="99" column="35" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CapituloDeLivroPublicado.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="50" column="36" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="118" column="40" lean-forward="false" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2160">
+          <caret line="97" column="102" lean-forward="true" selection-start-line="97" selection-start-column="102" selection-end-line="97" selection-end-column="102" />
+          <folding>
+            <element signature="e#12#28#0#Twig" expanded="true" />
+            <element signature="e#6683#6705#0#HTML" expanded="true" />
+            <element signature="e#11448#11470#0#HTML" expanded="true" />
+            <element signature="e#16485#16507#0#HTML" expanded="true" />
+            <element signature="e#21802#21824#0#HTML" expanded="true" />
+            <element signature="e#27267#27289#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

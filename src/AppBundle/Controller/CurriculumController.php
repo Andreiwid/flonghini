@@ -117,7 +117,8 @@ class CurriculumController extends Controller
                 'artigosPublicados' => $artigosPublicados,
                 'artigosAceitosParaPublicacao' => $artigoAceitoParaPublicacao,
                 'textosEmJornalOuRevista' => $textosEmJornalOuRevista,
-                'trabalhosEmEventos' => $trabalhosEmEventos
+                'trabalhosEmEventos' => $trabalhosEmEventos,
+                'capitulosOuLivrosPublicados' => $capituloOuLivroPublicado
             ]
         );
     }
