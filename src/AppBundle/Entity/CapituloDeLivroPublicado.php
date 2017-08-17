@@ -198,6 +198,13 @@ class CapituloDeLivroPublicado
     private $setoresDeAtividade;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PalavrasChaveCapituloDeLivroPublicado",
+     *     mappedBy="capituloDeLivroPublicado", cascade={"persist", "remove"})
+     */
+    private $palavrasChave;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="informacao_adicional", type="string", length=255, nullable=true)
@@ -210,6 +217,7 @@ class CapituloDeLivroPublicado
         $this->autores = new ArrayCollection();
         $this->areasDoConhecimento = new ArrayCollection();
         $this->setoresDeAtividade = new ArrayCollection();
+        $this->palavrasChave = new ArrayCollection();
     }
 
     /**
@@ -826,6 +834,38 @@ class CapituloDeLivroPublicado
     public function setPesquisador(Pesquisador $pesquisador)
     {
         $this->pesquisador = $pesquisador;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPalavrasChave(): ArrayCollection
+    {
+        return $this->palavrasChave;
+    }
+
+    /**
+     * @param ArrayCollection $palavrasChave
+     */
+    public function setPalavrasChave(ArrayCollection $palavrasChave)
+    {
+        $this->palavrasChave = $palavrasChave;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAreasDoConhecimento(): ArrayCollection
+    {
+        return $this->areasDoConhecimento;
+    }
+
+    /**
+     * @param ArrayCollection $areasDoConhecimento
+     */
+    public function setAreasDoConhecimento(ArrayCollection $areasDoConhecimento)
+    {
+        $this->areasDoConhecimento = $areasDoConhecimento;
     }
 
 

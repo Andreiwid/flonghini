@@ -218,11 +218,19 @@ class TrabalhosEmEventos
      */
     private $setoresDeAtividade;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PalavrasChaveTrabalhoEmEvento", mappedBy="trabalhoEmEvento",
+     *     cascade={"persist", "remove"})
+     */
+    private $palavrasChave;
+
     public function __construct()
     {
         $this->autores = new ArrayCollection();
         $this->areasDoConhecimento = new ArrayCollection();
         $this->setoresDeAtividade = new ArrayCollection();
+        $this->palavrasChave = new ArrayCollection();
     }
 
     public function addAutores(AutoresTrabalhosEmEventos $autores)
@@ -1031,6 +1039,24 @@ class TrabalhosEmEventos
     {
         $this->setoresDeAtividade = $setoresDeAtividade;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPalavrasChave(): ArrayCollection
+    {
+        return $this->palavrasChave;
+    }
+
+    /**
+     * @param ArrayCollection $palavrasChave
+     */
+    public function setPalavrasChave(ArrayCollection $palavrasChave)
+    {
+        $this->palavrasChave = $palavrasChave;
+    }
+
+
 
 
 }

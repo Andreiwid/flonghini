@@ -55,7 +55,6 @@ class CurriculumController extends Controller
      */
     public function indexAction(): Response
     {
-
         return $this->render(
             'default/index.html.twig'
         );
@@ -151,7 +150,6 @@ class CurriculumController extends Controller
             $json = json_encode($cv);
             $curriculo = json_decode($json, true);
         }
-
         $pesquisador = $this->curriculumService->salvarPesquisador($curriculo);
         $this->curriculumService->salvarFormacaoAcademica($curriculo, $pesquisador);
         $this->curriculumService->salvarTrabalhosEmEventos($curriculo, $pesquisador);
@@ -159,6 +157,8 @@ class CurriculumController extends Controller
         $this->curriculumService->salvarCapituloDeLivroPublicado($curriculo, $pesquisador);
         $this->curriculumService->salvarTextoEmJornalOuRevista($curriculo, $pesquisador);
         $this->curriculumService->salvarArtigoAceitoParaPublicacao($curriculo, $pesquisador);
+
+
     }
 
 

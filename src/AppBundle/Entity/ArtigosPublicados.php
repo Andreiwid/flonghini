@@ -184,6 +184,13 @@ class ArtigosPublicados
     private $setoresDeAtividade;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PalavrasChaveArtigosPublicados",
+     *     mappedBy="artigoPublicado", cascade={"persist", "remove"})
+     */
+    private $palavrasChave;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="informacao_adicional", type="string", length=255, nullable=true)
@@ -195,6 +202,7 @@ class ArtigosPublicados
         $this->autores = new ArrayCollection();
         $this->areasDoConhecimento = new ArrayCollection();
         $this->setoresDeAtividade = new ArrayCollection();
+        $this->palavrasChave = new ArrayCollection();
     }
 
     /**
@@ -774,5 +782,22 @@ class ArtigosPublicados
     {
         return $this->informacaoAdicional;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPalavrasChave(): ArrayCollection
+    {
+        return $this->palavrasChave;
+    }
+
+    /**
+     * @param ArrayCollection $palavrasChave
+     */
+    public function setPalavrasChave(ArrayCollection $palavrasChave)
+    {
+        $this->palavrasChave = $palavrasChave;
+    }
+
 }
 

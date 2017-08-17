@@ -16,6 +16,11 @@ use AppBundle\Entity\AutoresTextoEmJornalOuRevista;
 use AppBundle\Entity\AutoresTrabalhosEmEventos;
 use AppBundle\Entity\CapituloDeLivroPublicado;
 use AppBundle\Entity\FormacaoAcademica;
+use AppBundle\Entity\PalavrasChaveArtigoAceitoParaPublicacao;
+use AppBundle\Entity\PalavrasChaveArtigosPublicados;
+use AppBundle\Entity\PalavrasChaveCapituloDeLivroPublicado;
+use AppBundle\Entity\PalavrasChaveTextoEmJornalOuRevista;
+use AppBundle\Entity\PalavrasChaveTrabalhoEmEvento;
 use AppBundle\Entity\Pesquisador;
 use AppBundle\Entity\SetoresDeAtividadeArtigoAceitoParaPublicacao;
 use AppBundle\Entity\SetoresDeAtividadeArtigosPublicados;
@@ -179,6 +184,7 @@ class CurriculumService
             if (!is_null($trabalhosEmEventosArray)) {
                 foreach ($trabalhosEmEventosArray as $trabalhos) {
                     foreach ($trabalhos as $trabalho) {
+
                         $trabalhoEmEvento = new TrabalhosEmEventos();
                         $trabalhoEmEvento->setSequenciaProducao($trabalho['@attributes']['SEQUENCIA-PRODUCAO']);
 
@@ -274,6 +280,46 @@ class CurriculumService
                             $this->entityManager->flush();
                         }
 
+                        if (isset($trabalho['PALAVRAS-CHAVE']['@attributes'])) {
+                            $palavrasChaveNovo =
+                                new PalavrasChaveTrabalhoEmEvento();
+
+                            if (isset($trabalho['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-1'])) {
+                                $palavrasChaveNovo
+                                    ->setPalavraChave1($trabalho['PALAVRAS-CHAVE']
+                                    ['@attributes']['PALAVRA-CHAVE-1']);
+                            }
+                            if (isset($trabalho['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-2'])) {
+                                $palavrasChaveNovo
+                                    ->setPalavraChave2($trabalho['PALAVRAS-CHAVE']
+                                    ['@attributes']['PALAVRA-CHAVE-2']);
+                            }
+                            if (isset($trabalho['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-3'])) {
+                                $palavrasChaveNovo
+                                    ->setPalavraChave3($trabalho['PALAVRAS-CHAVE']
+                                    ['@attributes']['PALAVRA-CHAVE-3']);
+                            }
+                            if (isset($trabalho['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-4'])) {
+                                $palavrasChaveNovo
+                                    ->setPalavraChave4($trabalho['PALAVRAS-CHAVE']
+                                    ['@attributes']['PALAVRA-CHAVE-4']);
+                            }
+                            if (isset($trabalho['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-5'])) {
+                                $palavrasChaveNovo
+                                    ->setPalavraChave5($trabalho['PALAVRAS-CHAVE']
+                                    ['@attributes']['PALAVRA-CHAVE-5']);
+                            }
+                            if (isset($trabalho['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-6'])) {
+                                $palavrasChaveNovo
+                                    ->setPalavraChave6($trabalho['PALAVRAS-CHAVE']
+                                    ['@attributes']['PALAVRA-CHAVE-6']);
+                            }
+
+                            $palavrasChaveNovo->setTrabalhoEmEvento($trabalhoEmEvento);
+                            $this->entityManager->persist($palavrasChaveNovo);
+                            $this->entityManager->flush();
+                        }
+
                         $trabalhoEmEvento->setPesquisador($pesquisador);
                         
                         $this->entityManager->persist($trabalhoEmEvento);
@@ -349,6 +395,46 @@ class CurriculumService
                             ->setInformacaoAdicional(
                                 $artigo['INFORMACOES-ADICIONAIS']['@attributes']['DESCRICAO-INFORMACOES-ADICIONAIS']
                             );
+                    }
+
+                    if (isset($artigo['PALAVRAS-CHAVE']['@attributes'])) {
+                        $palavrasChaveNovo =
+                            new PalavrasChaveArtigosPublicados();
+
+                        if (isset($artigo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-1'])) {
+                            $palavrasChaveNovo
+                                ->setPalavraChave1($artigo['PALAVRAS-CHAVE']
+                                ['@attributes']['PALAVRA-CHAVE-1']);
+                        }
+                        if (isset($artigo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-2'])) {
+                            $palavrasChaveNovo
+                                ->setPalavraChave2($artigo['PALAVRAS-CHAVE']
+                                ['@attributes']['PALAVRA-CHAVE-2']);
+                        }
+                        if (isset($artigo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-3'])) {
+                            $palavrasChaveNovo
+                                ->setPalavraChave3($artigo['PALAVRAS-CHAVE']
+                                ['@attributes']['PALAVRA-CHAVE-3']);
+                        }
+                        if (isset($artigo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-4'])) {
+                            $palavrasChaveNovo
+                                ->setPalavraChave4($artigo['PALAVRAS-CHAVE']
+                                ['@attributes']['PALAVRA-CHAVE-4']);
+                        }
+                        if (isset($artigo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-5'])) {
+                            $palavrasChaveNovo
+                                ->setPalavraChave5($artigo['PALAVRAS-CHAVE']
+                                ['@attributes']['PALAVRA-CHAVE-5']);
+                        }
+                        if (isset($artigo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-6'])) {
+                            $palavrasChaveNovo
+                                ->setPalavraChave6($artigo['PALAVRAS-CHAVE']
+                                ['@attributes']['PALAVRA-CHAVE-6']);
+                        }
+
+                        $palavrasChaveNovo->setArtigoPublicado($artigoPublicado);
+                        $this->entityManager->persist($palavrasChaveNovo);
+                        $this->entityManager->flush();
                     }
 
                     $artigoPublicado->setPesquisador($pesquisador);
@@ -568,7 +654,48 @@ class CurriculumService
                     $this->entityManager->flush();
                 }
 
-                $capituloDeLivro->setPesquisador($pesquisador);$this->entityManager->persist($capituloDeLivro);
+                if (isset($capitulo['PALAVRAS-CHAVE']['@attributes'])) {
+                    $palavrasChaveNovo =
+                        new PalavrasChaveCapituloDeLivroPublicado();
+
+                    if (isset($capitulo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-1'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave1($capitulo['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-1']);
+                    }
+                    if (isset($capitulo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-2'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave2($capitulo['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-2']);
+                    }
+                    if (isset($capitulo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-3'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave3($capitulo['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-3']);
+                    }
+                    if (isset($capitulo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-4'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave4($capitulo['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-4']);
+                    }
+                    if (isset($capitulo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-5'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave5($capitulo['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-5']);
+                    }
+                    if (isset($capitulo['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-6'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave6($capitulo['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-6']);
+                    }
+
+                    $palavrasChaveNovo->setCapituloDeLivroPublicado($capituloDeLivro);
+                    $this->entityManager->persist($palavrasChaveNovo);
+                    $this->entityManager->flush();
+                }
+
+                $capituloDeLivro->setPesquisador($pesquisador);
+                $this->entityManager->persist($capituloDeLivro);
                 $this->entityManager->flush();
             }
         }
@@ -705,7 +832,48 @@ class CurriculumService
                     $this->entityManager->flush();
                 }
 
-                $novoTextoEmJornalOuRevista->setPesquisador($pesquisador);$this->entityManager->persist($novoTextoEmJornalOuRevista);
+                if (isset($textoEmJornalOuRevista['PALAVRAS-CHAVE']['@attributes'])) {
+                    $palavrasChaveNovo =
+                        new PalavrasChaveTextoEmJornalOuRevista();
+
+                    if (isset($textoEmJornalOuRevista['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-1'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave1($textoEmJornalOuRevista['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-1']);
+                    }
+                    if (isset($textoEmJornalOuRevista['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-2'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave2($textoEmJornalOuRevista['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-2']);
+                    }
+                    if (isset($textoEmJornalOuRevista['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-3'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave3($textoEmJornalOuRevista['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-3']);
+                    }
+                    if (isset($textoEmJornalOuRevista['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-4'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave4($textoEmJornalOuRevista['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-4']);
+                    }
+                    if (isset($textoEmJornalOuRevista['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-5'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave5($textoEmJornalOuRevista['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-5']);
+                    }
+                    if (isset($textoEmJornalOuRevista['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-6'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave6($textoEmJornalOuRevista['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-6']);
+                    }
+
+                    $palavrasChaveNovo->setTextoEmJornalOuRevista($novoTextoEmJornalOuRevista);
+                    $this->entityManager->persist($palavrasChaveNovo);
+                    $this->entityManager->flush();
+                }
+
+                $novoTextoEmJornalOuRevista->setPesquisador($pesquisador);
+                $this->entityManager->persist($novoTextoEmJornalOuRevista);
                 $this->entityManager->flush();
             }
         }
@@ -842,7 +1010,48 @@ class CurriculumService
                     $this->entityManager->flush();
                 }
 
-                $novoArtigoAceitoParaPublicacao->setPesquisador($pesquisador);$this->entityManager->persist($novoArtigoAceitoParaPublicacao);
+                if (isset($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']['@attributes'])) {
+                    $palavrasChaveNovo =
+                        new PalavrasChaveArtigoAceitoParaPublicacao();
+
+                    if (isset($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-1'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave1($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-1']);
+                    }
+                    if (isset($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-2'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave2($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-2']);
+                    }
+                    if (isset($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-3'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave3($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-3']);
+                    }
+                    if (isset($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-4'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave4($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-4']);
+                    }
+                    if (isset($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-5'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave5($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-5']);
+                    }
+                    if (isset($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']['@attributes']['PALAVRA-CHAVE-6'])) {
+                        $palavrasChaveNovo
+                            ->setPalavraChave6($artigoAceitoParaPublicacao['PALAVRAS-CHAVE']
+                            ['@attributes']['PALAVRA-CHAVE-6']);
+                    }
+
+                    $palavrasChaveNovo->setArtigoAceitoParaPublicacao($novoArtigoAceitoParaPublicacao);
+                    $this->entityManager->persist($palavrasChaveNovo);
+                    $this->entityManager->flush();
+                }
+
+                $novoArtigoAceitoParaPublicacao->setPesquisador($pesquisador);
+                $this->entityManager->persist($novoArtigoAceitoParaPublicacao);
                 $this->entityManager->flush();
             }
         }

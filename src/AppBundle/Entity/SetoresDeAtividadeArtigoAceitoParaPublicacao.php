@@ -49,7 +49,6 @@ class SetoresDeAtividadeArtigoAceitoParaPublicacao
      */
     private $artigoAceitoParaPublicacao;
 
-
     /**
      * Get id
      *

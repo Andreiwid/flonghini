@@ -178,8 +178,8 @@ class ArtigoAceitoParaPublicacao
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SetoresDeAtividadeArtigoAceitoParaPublicacao", mappedBy="artigoPublicado",
-     *     cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SetoresDeAtividadeArtigoAceitoParaPublicacao",
+     *     mappedBy="artigoPublicado", cascade={"persist", "remove"})
      */
     private $setoresDeAtividade;
 
@@ -190,11 +190,19 @@ class ArtigoAceitoParaPublicacao
      */
     private $informacaoAdicional;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PalavrasChaveArtigoAceitoParaPublicacao",
+     *     mappedBy="artigoAceitoParaPublicacao", cascade={"persist", "remove"})
+     */
+    private $palavrasChave;
+
     public function __construct()
     {
         $this->autores = new ArrayCollection();
         $this->areasDoConhecimento = new ArrayCollection();
         $this->setoresDeAtividade = new ArrayCollection();
+        $this->palavrasChave = new ArrayCollection();
     }
 
     /**
@@ -765,6 +773,21 @@ class ArtigoAceitoParaPublicacao
         $this->pesquisador = $pesquisador;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getPalavrasChave(): ArrayCollection
+    {
+        return $this->palavrasChave;
+    }
+
+    /**
+     * @param ArrayCollection $palavrasChave
+     */
+    public function setPalavrasChave(ArrayCollection $palavrasChave)
+    {
+        $this->palavrasChave = $palavrasChave;
+    }
 
 }
 
