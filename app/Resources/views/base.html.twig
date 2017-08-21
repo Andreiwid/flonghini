@@ -178,13 +178,13 @@
                 <!-- end search mobile button -->
 
                 <!-- input: search field -->
-                <form action="search.html" class="header-search pull-right">
-                    <input id="search-fld"  type="text" name="param" placeholder="Buscar" data-autocomplete='[]'>
-                    <button type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                    <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-                </form>
+                {#<form action="search.html" class="header-search pull-right">#}
+                    {#<input id="search-fld"  type="text" name="param" placeholder="Buscar" data-autocomplete='[]'>#}
+                    {#<button type="submit">#}
+                        {#<i class="fa fa-search"></i>#}
+                    {#</button>#}
+                    {#<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>#}
+                {#</form>#}
                 <!-- end input: search field -->
 
                 <!-- fullscreen button -->
@@ -289,16 +289,19 @@
                 -->
 
                 <ul>
-                    <li class="active">
+                    <li class="">
                         <a href="{{ path('home') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
                     </li>
-                    <li class="active">
+                    <li class="">
+                        <a href="{{ path('busca') }}" title="Buscar"><i class="fa fa-lg fa-fw fa-search"></i> <span class="menu-item-parent">Pesquisar</span></a>
+                    </li>
+                    <li class="">
                         <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-file-text-o"></i> <span class="menu-item-parent">Currículos</span></a>
                         <ul>
-                            <li class="active">
+                            <li class="">
                                 <a href="{{ path('cadastrar') }}" title="Dashboard"><span class="menu-item-parent">Cadastrar</span></a>
                             </li>
-                            <li class="active">
+                            <li class="">
                                 <a href="{{ path('listar_curriculos') }}" title="Dashboard"><span class="menu-item-parent">Listar</span></a>
                             </li>
                         </ul>
@@ -574,15 +577,10 @@
             {#</script>#}
 
             <script type="text/javascript">
-
                 // DO NOT REMOVE : GLOBAL FUNCTIONS!
-
                 $(document).ready(function() {
-
                     pageSetUp();
-
                     // PAGE RELATED SCRIPTS
-
                     // switch style change
                     $('input[name="checkbox-style"]').change(function() {
                         //alert($(this).val())
@@ -595,7 +593,6 @@
                             $("#switch-1").hide();
                             $("#switch-2").show();
                         }
-
                     });
 
                     // tab - pills toggle
@@ -606,20 +603,9 @@
                         } else {
                             $("#widget-tab-1").removeClass("nav-tabs").addClass("nav-pills");
                         }
-
                     });
-
-
-
-
-
                 });
-
-
-
             </script>
-
-
         {% endblock %}
         </body>
     {% endblock %}
