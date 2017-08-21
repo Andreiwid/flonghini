@@ -2,9 +2,10 @@
 
 namespace AppBundle\Services;
 
+
 use Doctrine\ORM\EntityManagerInterface;
 
-class UserService
+class SearchService
 {
     /**
      * @var EntityManagerInterface
@@ -18,6 +19,12 @@ class UserService
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+    }
+
+    public function getAllArtigosPublicadosByKeyword(string $keyword)
+    {
+        return $this->entityManager->getRepository('AppBundle:PalavrasChaveArtigosPublicados')
+            ->getAllArtigosPublicadosByKeyword($keyword);
     }
 
 }

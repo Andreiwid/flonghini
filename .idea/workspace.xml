@@ -3,10 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="f3f6541d-6a7b-4cf7-a4ec-129369e61471" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/symfony_requirements" afterPath="$PROJECT_DIR$/bin/symfony_requirements" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/search/search.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/search/search.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveArtigosPublicados.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveArtigosPublicados.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/ArtigosPublicadosRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ArtigosPublicadosRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Repository/PalavrasChaveArtigosPublicadosRepository.php" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/PalavrasChaveArtigosPublicadosRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Services/UserService.php" afterPath="$PROJECT_DIR$/src/AppBundle/Services/UserService.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,16 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5274">
-              <caret line="293" column="25" lean-forward="false" selection-start-line="293" selection-start-column="25" selection-end-line="293" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="search.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/search/search.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -39,15 +35,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+            <state relative-caret-position="393">
+              <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
               <folding>
-                <element signature="e#40#97#0#PHP" expanded="true" />
-                <element signature="e#551#576#1#PHP" expanded="true" />
+                <element signature="e#40#77#0#PHP" expanded="true" />
+                <element signature="e#988#1013#1#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/SearchService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
+              <folding>
+                <element signature="e#541#583#1#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PalavrasChaveArtigosPublicadosRepository.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/PalavrasChaveArtigosPublicadosRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,9 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/config/security.yml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/XMLProcessorController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Services/CurriculoService.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Helpers/FinderHelper.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Services/DefaultService.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Services/FinderService.php" />
@@ -117,7 +132,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/cadastrar.html" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Services/UserService.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/registration/register.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
@@ -134,7 +148,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/UsersPesquisadores.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html" />
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/curriculos/visualizar.html.twig" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
@@ -143,18 +156,23 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ArtigoAceitoParaPublicacao.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveArtigoAceitoParaPublicacao.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/SetoresDeAtividadeArtigoAceitoParaPublicacao.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveArtigosPublicados.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/CapituloDeLivroPublicado.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveCapituloDeLivroPublicado.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/TextoEmJornalOuRevistaPublicado.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveTextoEmJornalOuRevista.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/search/search.html" />
         <option value="$PROJECT_DIR$/app/Resources/views/search/search.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Services/UserService.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveArtigosPublicados.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/ArtigosPublicadosRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Services/SearchService.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Repository/PalavrasChaveArtigosPublicadosRepository.php" />
       </list>
     </option>
   </component>
@@ -267,7 +285,7 @@
               <item name="proj" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Repository" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="proj" type="b2602c69:ProjectViewProjectNode" />
@@ -421,18 +439,18 @@
       <workItem from="1502831608596" duration="808000" />
       <workItem from="1502921458500" duration="6211000" />
       <workItem from="1503062792356" duration="2439000" />
-      <workItem from="1503337698932" duration="1127000" />
+      <workItem from="1503337698932" duration="5093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143343000" />
+    <option name="totallyTimeSpent" value="147309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="334" y="1076" width="1323" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2772122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="467" y="15" width="346" height="850" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2404072" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="467" y="15" width="346" height="850" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -464,9 +482,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/WB0573SK0/DEVELOPER/HTML_Full_Version/login.html" />
-    <entry file="file://$USER_HOME$/Downloads/WB0573SK0/DEVELOPER/HTML_Full_Version/register.html" />
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base_login_register.html.twig" />
     <entry file="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -549,21 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/UserService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="21" column="5" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="103" column="1" lean-forward="true" selection-start-line="103" selection-start-column="1" selection-end-line="103" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/curriculos/listar.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="941">
@@ -642,7 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveArtigosPublicados.php" />
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/SetoresDeAtividadeCapituloDeLivroPublicado.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
@@ -669,14 +668,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveCapituloDeLivroPublicado.php" />
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="185" column="4" lean-forward="true" selection-start-line="185" selection-start-column="4" selection-end-line="190" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/TextoEmJornalOuRevistaPublicado.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -690,14 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="39" column="6" lean-forward="true" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="844">
-          <caret line="1058" column="0" lean-forward="false" selection-start-line="1058" selection-start-column="0" selection-end-line="1058" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -735,8 +718,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/CurriculumController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="145" column="33" lean-forward="false" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/UserService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/CurriculumService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#38#85#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/PesquisadorService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="34" />
+          <folding>
+            <element signature="e#39#78#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PalavrasChaveArtigosPublicados.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="73" column="7" lean-forward="true" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ArtigosPublicados.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="179" column="27" lean-forward="true" selection-start-line="179" selection-start-column="27" selection-end-line="179" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -751,14 +778,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ArtigosPublicadosRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        <state relative-caret-position="393">
+          <caret line="35" column="18" lean-forward="false" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
           <folding>
-            <element signature="e#40#97#0#PHP" expanded="true" />
-            <element signature="e#551#576#1#PHP" expanded="true" />
+            <element signature="e#40#77#0#PHP" expanded="true" />
+            <element signature="e#988#1013#1#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Services/SearchService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
+          <folding>
+            <element signature="e#541#583#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/PalavrasChaveArtigosPublicadosRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -31,13 +31,13 @@ use AppBundle\Entity\TextoEmJornalOuRevistaPublicado;
 use AppBundle\Entity\TrabalhosEmEventos;
 use AppBundle\Entity\User;
 use AppBundle\Entity\UsersPesquisadores;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class CurriculumService
 {
     /**
-     * @var EntityManager
+     * @var EntityManagerInterface
      */
     private $entityManager;
 
@@ -48,10 +48,10 @@ class CurriculumService
 
     /**
      * CurriculumService constructor.
-     * @param EntityManager $entityManager
+     * @param EntityManagerInterface $entityManager
      * @param Container $container
      */
-    public function __construct(EntityManager $entityManager, Container $container)
+    public function __construct(EntityManagerInterface $entityManager, Container $container)
     {
         $this->entityManager = $entityManager;
         $this->container = $container;
