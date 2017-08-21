@@ -200,7 +200,7 @@ class CapituloDeLivroPublicado
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\PalavrasChaveCapituloDeLivroPublicado",
-     *     mappedBy="capituloDeLivroPublicado", cascade={"persist", "remove"})
+     *     mappedBy="capituloDeLivroPublicado", cascade={"persist", "remove"}, fetch="EAGER")
      */
     private $palavrasChave;
 

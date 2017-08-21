@@ -31,8 +31,18 @@ class SearchController extends Controller
         if ($request->isMethod('POST')) {
             $searchTerm = $request->get('search_input');
             $artigosPublicados = $this->searchService->getAllArtigosPublicadosByKeyword($searchTerm);
+            $artigosAceitosParaPublicacao = $this->searchService
+                ->getAllArtigosAceitosParaPublicacaoByKeyword($searchTerm);
+            $capituloOuLivroPublicado = $this->searchService->getAllCapituloOuLivroPublicadoByKeyword($searchTerm);
+            $tabalhosEmEventos = $this->searchService->getAllTrabalhosEmEventosByKeyword($searchTerm);
+            $textosEmJornalOuRevista = $this->searchService->getAllTextosEmJornalOuRevistaByKeyword($searchTerm);
 
             var_dump($artigosPublicados);
+            var_dump($artigosAceitosParaPublicacao);
+            var_dump($capituloOuLivroPublicado);
+            var_dump($tabalhosEmEventos);
+            var_dump($textosEmJornalOuRevista);
+
             die();
         }
         return $this->render('search/search.html.twig');

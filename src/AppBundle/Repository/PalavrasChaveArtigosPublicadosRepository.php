@@ -10,7 +10,11 @@ namespace AppBundle\Repository;
  */
 class PalavrasChaveArtigosPublicadosRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getAllArtigosPublicadosByKeyword($keyword)
+    /**
+     * @param string $keyword
+     * @return array|null
+     */
+    public function getAllArtigosPublicadosByKeyword(string $keyword): ?array
     {
         return $this->createQueryBuilder('pcap')
             ->select('pcap')

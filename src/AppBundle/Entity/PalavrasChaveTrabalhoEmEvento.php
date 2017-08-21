@@ -65,7 +65,7 @@ class PalavrasChaveTrabalhoEmEvento
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TrabalhosEmEventos", inversedBy="palavrasChave",
-     *     cascade={"persist", "remove"})
+     *     cascade={"persist", "remove"}, fetch="EAGER")
      * @ORM\JoinColumn(name="trabalho_em_evento_id", referencedColumnName="id")
      */
     private $trabalhoEmEvento;

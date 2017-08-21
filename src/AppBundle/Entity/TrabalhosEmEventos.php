@@ -221,7 +221,7 @@ class TrabalhosEmEventos
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\PalavrasChaveTrabalhoEmEvento", mappedBy="trabalhoEmEvento",
-     *     cascade={"persist", "remove"})
+     *     cascade={"persist", "remove"}, fetch="EAGER")
      */
     private $palavrasChave;
 

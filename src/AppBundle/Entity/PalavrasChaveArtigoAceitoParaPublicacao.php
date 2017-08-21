@@ -65,7 +65,7 @@ class PalavrasChaveArtigoAceitoParaPublicacao
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ArtigoAceitoParaPublicacao", inversedBy="palavrasChave",
-     *     cascade={"persist", "remove"})
+     *     cascade={"persist", "remove"}, fetch="EAGER")
      * @ORM\JoinColumn(name="artigo_aceito_para_publicacao_id", referencedColumnName="id")
      */
     private $artigoAceitoParaPublicacao;

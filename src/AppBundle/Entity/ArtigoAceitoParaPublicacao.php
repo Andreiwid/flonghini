@@ -193,7 +193,7 @@ class ArtigoAceitoParaPublicacao
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\PalavrasChaveArtigoAceitoParaPublicacao",
-     *     mappedBy="artigoAceitoParaPublicacao", cascade={"persist", "remove"})
+     *     mappedBy="artigoAceitoParaPublicacao", cascade={"persist", "remove"}, fetch="EAGER")
      */
     private $palavrasChave;
 
