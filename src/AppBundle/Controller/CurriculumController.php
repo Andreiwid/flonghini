@@ -82,8 +82,6 @@ class CurriculumController extends Controller
             $this->saveAction();
             return $this->redirect($this->generateUrl('curriculo'));
         }
-
-
         return $this->render(
             'curriculos/cadastrar.html.twig',
             [
@@ -139,11 +137,12 @@ class CurriculumController extends Controller
         );
     }
 
+
     public function saveAction(): void
     {
         $finder = new Finder();
-        $finder->files()->in('/home/francisco/projetos/proj/xml');
-//        $finder->files()->in('/Users/Chico/Sites/proj/xml');
+//        $finder->files()->in('/home/francisco/projetos/proj/xml');
+        $finder->files()->in('/Users/Chico/Sites/proj/xml');
 
         foreach ($finder as $file) {
             $cv = new \SimpleXMLElement($file->getContents());
