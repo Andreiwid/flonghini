@@ -79,6 +79,7 @@ class CurriculumController extends Controller
                 $fileName
             );
             $curriculo->setFile($fileName);
+
             $this->saveAction();
             return $this->redirect($this->generateUrl('curriculo'));
         }
@@ -106,6 +107,11 @@ class CurriculumController extends Controller
         $textosEmJornalOuRevista = $this->pesquisadorService->getTextoEmRevistaOuJornalByPesquisadorId($pesquisadorId);
         $trabalhosEmEventos = $this->pesquisadorService->getTrabalhosEmEventos($pesquisadorId);
 
+        $arrayAnosArtigos = [];
+        foreach ($artigosPublicados as $artigosPublicado) {
+            array_push($arrayAnosArtigos, $artigosPublicado->getAnoDoArtigo());
+        }
+
         return $this->render(
             'curriculos/visualizar.html.twig',
             [
@@ -115,7 +121,8 @@ class CurriculumController extends Controller
                 'artigosAceitosParaPublicacao' => $artigoAceitoParaPublicacao,
                 'textosEmJornalOuRevista' => $textosEmJornalOuRevista,
                 'trabalhosEmEventos' => $trabalhosEmEventos,
-                'capitulosOuLivrosPublicados' => $capituloOuLivroPublicado
+                'capitulosOuLivrosPublicados' => $capituloOuLivroPublicado,
+                'anosDePublicacaoDosArtigos' => $arrayAnosArtigos
             ]
         );
     }
@@ -141,14 +148,15 @@ class CurriculumController extends Controller
     public function saveAction(): void
     {
         $finder = new Finder();
-//        $finder->files()->in('/home/francisco/projetos/proj/xml');
-        $finder->files()->in('/Users/Chico/Sites/proj/xml');
+        $finder->files()->in('/home/francisco/projetos/proj/xml');
+//        $finder->files()->in('/Users/Chico/Sites/proj/xml');
 
         foreach ($finder as $file) {
             $cv = new \SimpleXMLElement($file->getContents());
             $json = json_encode($cv);
             $curriculo = json_decode($json, true);
         }
+
         $pesquisador = $this->curriculumService->salvarPesquisador($curriculo);
         $this->curriculumService->salvarFormacaoAcademica($curriculo, $pesquisador);
         $this->curriculumService->salvarTrabalhosEmEventos($curriculo, $pesquisador);

@@ -8,6 +8,14 @@
             <li>Cadastrar</li>
         </ol>
     {% endblock %}
+
+    <input type="hidden" id="quantidadeDeArtigosPublicados" value="{{ artigosPublicados|length }}"/>
+    <input type="hidden" id="quantidadeDeArtigosAceitosParaPublicacao" value="{{ artigosAceitosParaPublicacao|length }}"/>
+    <input type="hidden" id="quantidadeDeCapitulosOuLivrosPublicados" value="{{ capitulosOuLivrosPublicados|length }}"/>
+    <input type="hidden" id="quantidadeDeTrabalhosEmEventos" value="{{ trabalhosEmEventos|length }}"/>
+    <input type="hidden" id="quantidadeDeTextosEmJornaisOuRevistas" value="{{ textosEmJornalOuRevista|length }}"/>
+
+
     <div id="content">
         <!-- widget grid -->
         <section id="widget-grid" class="">
@@ -82,6 +90,9 @@
                                                     <li>
                                                         <a href="#iss6" data-toggle="tab" aria-expanded="true">Texto em Jornal ou Revista</a>
                                                     </li>
+                                                    <li>
+                                                        <a href="#iss7" data-toggle="tab" aria-expanded="true">Estatísticas</a>
+                                                    </li>
                                                 </ul>
                                                 <div class="tab-content padding-10">
                                                     <div class="tab-pane active" id="iss1">
@@ -124,19 +135,22 @@
 
                                                     <div class="tab-pane fade" id="iss2">
                                                         <div class="well well-sm well-light">
+
+
                                                             <h3>Lista de artigos
                                                             <br>
                                                             <small>Clique para visualizar os detalhes</small></h3>
                                                             <div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
                                                                 {% set k=0 %}
                                                                 {% for artigoPublicado in artigosPublicados%}
-                                                                <div class="">
+                                                                    <div class="">
                                                                     <h4 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-{{ k }}" aria-controls="ui-accordion-accordion-panel-{{ k }}" aria-selected="false" tabindex="-1">
                                                                     <span class="ui-accordion-header-icon ui-icon fa fa-plus"></span>{{ artigoPublicado.tituloDoArtigo }}</h4>
                                                                     <div class="padding-10 ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-{{ k }}" aria-labelledby="ui-accordion-accordion-header-{{ k }}" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
                                                                         <p><strong>Título do Artigo:</strong> {{ artigoPublicado.tituloDoArtigo }}</p>
                                                                         <p><strong>Natureza:</strong> {{ artigoPublicado.natureza }}</p>
                                                                         <p><strong>Ano do Artigo:</strong> {{ artigoPublicado.anoDoArtigo }}</p>
+                                                                        <input type="hidden" id="anoDosArtigos_{{ k }}" value="{{ artigoPublicado.anoDoArtigo }}"/>
                                                                         <p><strong>Idioma:</strong> {{ artigoPublicado.idioma }}</p>
                                                                         <p><strong>Pais de publicação:</strong> {{ artigoPublicado.paisdePublicacao }}</p>
                                                                         <p><strong>Meio de divulgação:</strong> {{ artigoPublicado.meioDeDivulgacao }}</p>
@@ -156,6 +170,7 @@
                                                                 {% set k=k+1 %}
                                                                 {% endfor %}
                                                             </div>
+
                                                         </div>
                                                     </div>
 
@@ -310,6 +325,22 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="tab-pane fade" id="iss7">
+                                                        <div class="well well-sm well-light">
+                                                            <div id="accordion6" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+                                                                <h3>Quantidade total de produções bibliográficas: <span id="quantidadeProducaoBibliografica"></span></h3>
+                                                                <h3>Artigos publicados por ano</h3>
+                                                                <div style="width: 30%">
+                                                                    <canvas id="myChart" width="200" height="200"></canvas>
+                                                                </div>
+                                                                <h3>Proporção de publicações por perfil</h3>
+                                                                <div style="width: 30%">
+                                                                    <canvas id="myChart2" width="200" height="200"></canvas>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -326,17 +357,129 @@
                         <!-- end widget div -->
                     </div>
                     <!-- end widget -->
-                </article>
+
+            </article>
                 <!-- WIDGET END -->
             </div>
             <!-- end row -->
 
         </section>
         <!-- end widget grid -->
+
     </div>
     <!-- END MAIN CONTENT -->
+
+    <input type="hidden" id="anoDosArtigosLength" value="{{ anosDePublicacaoDosArtigos|length }}"/>
+
+
+
     {% block body_scripts %}
         {{ parent() }}
+        <script src="{{ asset("js/plugin/chartjs/chart.min.js") }}"></script>
+        {#<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>#}
+        <script type="text/javascript">
+
+
+            $(document).ready(function() {
+
+                var anoDosArtigosArrayLength = document.getElementById('anoDosArtigosLength').value;
+                var arrayAnoDosArtigos = [];
+
+                for (i = 0; i < anoDosArtigosArrayLength; i++) {
+                    arrayAnoDosArtigos.push(document.getElementById('anoDosArtigos_'+i).value);
+                }
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    responsive: true,
+                    type: 'line',
+                    data: {
+                        labels: ["1993", "2005"],
+                        datasets: [{
+                            label: 'Quantidade de Artigos Publicados por Ano',
+                            data: [1, 2],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+                var quantidadeDeArtigosPublicados = document.getElementById('quantidadeDeArtigosPublicados').value;
+                var quantidadeDeArtigosAceitosParaPublicacao = document.getElementById('quantidadeDeArtigosAceitosParaPublicacao').value;
+                var quantidadeDeCapitulosOuLivrosPublicados = document.getElementById('quantidadeDeCapitulosOuLivrosPublicados').value;
+                var quantidadeDeTrabalhosEmEventos = document.getElementById('quantidadeDeTrabalhosEmEventos').value;
+                var quantidadeDeTextosEmJornaisOuRevistas = document.getElementById('quantidadeDeTextosEmJornaisOuRevistas').value;
+
+                var total_publicacoes = (parseInt(quantidadeDeArtigosPublicados) + parseInt(quantidadeDeArtigosAceitosParaPublicacao) + parseInt(quantidadeDeCapitulosOuLivrosPublicados) + parseInt(quantidadeDeTrabalhosEmEventos) + parseInt(quantidadeDeTextosEmJornaisOuRevistas));
+                $("#quantidadeProducaoBibliografica").text(total_publicacoes);
+
+
+
+                var ctx2 = document.getElementById('myChart2').getContext('2d');
+                var myChart2 = new Chart(ctx2, {
+                    responsive: true,
+                    type: 'bar',
+                    data: {
+                        labels: ["Artigos", "Artigos Aceitos", "Capítulos ou Livros", "Trabalhos em Eventos", "Jornais Ou Revistas"],
+                        datasets: [{
+                            label: 'Proporção de publicações por perfil',
+                            data: [quantidadeDeArtigosPublicados, quantidadeDeArtigosAceitosParaPublicacao, quantidadeDeCapitulosOuLivrosPublicados, quantidadeDeTrabalhosEmEventos, quantidadeDeTextosEmJornaisOuRevistas],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+            })
+        </script>
+
         <script type="text/javascript">
             $(document).ready(function() {
                 /*

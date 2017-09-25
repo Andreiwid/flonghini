@@ -10,5 +10,13 @@ namespace AppBundle\Repository;
  */
 class ArtigosPublicadosRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    public function getAnoArtigosPublicados($pesquisadorId): ?array
+    {
+        return $this->createQueryBuilder('ap')
+            ->select('ap.anoDoArtigo')
+            ->where('ap.pesquisador = :pesquisadorId')
+            ->setParameter(':pesquisadorId', $pesquisadorId)
+            ->getQuery()
+            ->getResult();
+    }
 }
